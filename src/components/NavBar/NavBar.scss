@@ -1,0 +1,27 @@
+.navbar {
+  display: flex;
+  height: 122px;
+
+  .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #1F262A;
+    width: 100%;
+
+    .logo {
+      width: 143px;
+    }
+
+    .text {
+      color: #AC9168;
+      font-family: "Candara Light", serif;
+      font-size: 28px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      text-decoration: none;
+      padding-inline: 50px;
+    }
+  }
+}
