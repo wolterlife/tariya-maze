@@ -1,27 +1,40 @@
-.navbar {
+.containerNav {
+  background: #1F262A;
   display: flex;
-  height: 122px;
+  flex-direction: column;
+  align-items: center;
 
-  .content {
+  .navbar {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #1F262A;
-    width: 100%;
+    height: 13vh;
 
-    .logo {
-      width: 143px;
-    }
+    .content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
 
-    .text {
-      color: #AC9168;
-      font-family: "Candara Light", serif;
-      font-size: 28px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: normal;
-      text-decoration: none;
-      padding-inline: 50px;
+      .logo {
+        width: 143px;
+      }
+
+      .text {
+        color: #AC9168;
+        font-family: "Candara Light", serif;
+        font-size: 28px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        text-decoration: none;
+        padding-inline: 50px;
+      }
     }
   }
+
+  .line {
+    width: 55vw;
+    margin: 0;
+    border-bottom: 0;
+  }
 }
+
