@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Viaoda+Libre&display=swap');
+
+.backgroundImg {
+  height: 87vh;
+  background-image: url('../../../public/img/background-main.png');
+  background-repeat: no-repeat;
+  background-size: 100% 87vh;
+  background-color: lightgray;
+  background-blend-mode: multiply;
+  filter: contrast(1.1);
+
+  .content {
+    .topContainer {
+      backdrop-filter: blur(2px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 35px;
+
+      .text {
+        color: #FFF;
+        font-family: Viaoda Libre, serif;
+        font-size: 40px;
+        margin: 0;
+        padding-inline: 30px;
+      }
+    }
+
+    .bottomContainer {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 39px;
+      display: flex;
+      justify-content: center;
+
+      .button {
+        width: 240px;
+        border-radius: 3px;
+        border: 1px solid #FFF;
+        background: rgba(0, 0, 0, 0.40);
+        cursor: pointer;
+
+        .text {
+          color: #FFF;
+          font-family: "Candara Light", serif;
+          font-size: 26px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          margin: 0;
+          padding: 4px 18px;
+          text-align: center;
+        }
+
+        &:first-child {
+          margin-right: 150px;
+        }
+      }
+    }
+  }
+}
+
+

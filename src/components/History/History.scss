@@ -1,0 +1,68 @@
+.historyContainer {
+  background-color: #1F262A;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .textLarge {
+    margin: 0;
+    color: #FFF;
+    font-family: Viaoda Libre, serif;
+    font-size: 35px;
+    font-weight: 400;
+    padding-top: 35px;
+    padding-bottom: 3px;
+  }
+
+  .small {
+    color: #AC9168;
+    position: absolute;
+    font-family: 'Candara Light', sans-serif;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  .text1 {
+    top: 86px;
+    left: 271px;
+  }
+
+  .text2 {
+    width: 400px;
+    top: 146px;
+    left: 349px;
+  }
+
+  .text3 {
+    width: 450px;
+    top: 226px;
+    left: 187px;
+  }
+
+  .text4 {
+    top: 382px;
+    left: 374px;
+  }
+
+  .text5 {
+    width: 450px;
+    top: 112px;
+    left: 855px;
+  }
+
+  .text6 {
+    width: 450px;
+    top: 213px;
+    left: 811px;
+  }
+
+  .text7 {
+    width: 450px;
+    top: 310px;
+    left: 868px;
+  }
+}

@@ -1,0 +1,15 @@
+.containerImgInLine {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  background-color: #1F262A;
+  padding-top: 30px;
+
+  .img1 {
+    padding-right: 10px;
+  }
+
+  .img2 {
+    padding-right: 20px;
+  }
+}
