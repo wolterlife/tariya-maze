@@ -10,7 +10,7 @@ const NavBar = () => {
           <Link to='/news' className='text'>Новости</Link>
           <Link to='/menu' className='text'>Меню</Link>
           <Link to='/' className='text'>
-            <img src='/img/logo.png' alt='logo'/>
+            <img src='/img/logo.svg' alt='logo'/>
           </Link>
           <Link to='/discounts' className='text'>Акции</Link>
           <Link to='/profile' className='text'>Профиль</Link>
