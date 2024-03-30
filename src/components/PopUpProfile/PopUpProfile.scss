@@ -4,14 +4,13 @@
   height: 100%;
   width: 100%;
   position: fixed;
-  z-index: 10;
+  z-index: 3;
   top: 0;
   display: flex;
   justify-content: center;
   align-items: center;
 
   .content {
-    z-index: 10;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -19,24 +18,48 @@
     align-items: center;
     background: #1f262a;
     border-radius: 3px 0;
-    width: 414px;
+    width: fit-content;
+    height: 448px;
     font-family: "Candara", sans-serif;
     font-size: 25px;
     color: #ac9168;
-    padding-inline: 56px;
+    padding-inline: 40px;
+
+    .backgroundTop {
+      position: absolute;
+      z-index: -1;
+      top: -21px;
+      right: -52px;
+      pointer-events: none;
+    }
+
+    .backgroundBot {
+      z-index: -1;
+      position: absolute;
+      pointer-events: none;
+      bottom: 0;
+      left: -44px;
+    }
+
+    .textEntry {
+      margin-top: 48px;
+    }
 
     .buttonClose {
       position: absolute;
+      z-index: 3;
       top: 34px;
       right: 34px;
     }
 
     .buttonLogin {
       font-family: "Candara", sans-serif;
+      font-weight: 300;
       color: #fff;
       background-color: transparent;
       border: 1px solid #AC9168;
       cursor: pointer;
+      margin-top: 40px;
       padding: 8px 62px;
     }
 
@@ -50,6 +73,7 @@
       .text {
         font-size: 18px;
         color: #fff;
+        padding-right: 14px;
       }
 
       .input {
@@ -65,6 +89,21 @@
         //&:-webkit-autofill, &:-webkit-autofill:focus {
         //}
       }
+    }
+
+    .textInfo {
+      font-family: "Candara", sans-serif;
+      font-size: 12px;
+    }
+
+    .buttonRegister {
+      font-family: "Candara", sans-serif;
+      font-size: 16px;
+      background-color: transparent;
+      border: 0;
+      color: #ac9168;
+      cursor: pointer;
+      margin: 25px 0 40px;
     }
   }
 }
