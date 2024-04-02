@@ -1,0 +1,46 @@
+.formRegistration {
+  position: relative;
+  margin-top: 34px;
+  height: 80vh;
+  width: 30vw;
+  background-color: red;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: visible;
+
+  .backgroundTop {
+    position: absolute;
+    top: -21px;
+    right: -52px;
+    pointer-events: none;
+  }
+
+  .backgroundBot {
+    position: absolute;
+    pointer-events: none;
+    bottom: 0;
+    left: -44px;
+  }
+
+  .line {
+    display: flex;
+
+    .text {
+      font-family: "Candara", sans-serif;;
+      font-weight: 400;
+      font-size: 16px;
+      color: #ac9168
+    }
+
+    .input {
+      font-family: "Candara", sans-serif;;
+      font-weight: 200;
+      font-size: 16px;
+      background-color: transparent;
+      border: 0;
+      height: 25px;
+      border-bottom: 1px solid #AC9168;
+      outline: none;
+      color: #fff;
+    }
+  }
+}

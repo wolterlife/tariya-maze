@@ -13,7 +13,7 @@ import {useSelector} from "react-redux";
 function HomePage() {
   const {isPopUpProfileVisible} = useSelector(state => state.common)
   return (
-    <div>
+    <>
       <NavBar/>
       {isPopUpProfileVisible && <PopUpProfile/>}
       <ImgLargeButtons/>
@@ -23,7 +23,7 @@ function HomePage() {
       <ImgInLine/>
       <Reviews/>
       <Footer/>
-    </div>
+    </>
   );
 }
 
