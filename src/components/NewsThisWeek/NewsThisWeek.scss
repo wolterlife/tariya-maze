@@ -1,0 +1,124 @@
+.newsWeek {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #1F262A;
+
+  .textLarge {
+    margin: 0;
+    padding-top: 35px;
+    color: #FFF;
+    font-family: Viaoda Libre, sans-serif;
+    font-size: 45px;
+    font-weight: 400;
+  }
+
+  .cardsWeek {
+    height: 560px;
+
+    .imgLeft {
+      position: absolute;
+      left: 15vw;
+    }
+
+    .imgRight {
+      position: absolute;
+      right: 15vw;
+    }
+
+    .topLine {
+      display: flex;
+
+      .card {
+        &:first-child {
+          margin: 40px 0 0 25px;
+        }
+
+        &:last-child {
+          margin: 80px 0 0 25px;
+        }
+
+        .textTopCard {
+          font-family: "Viaoda Libre", sans-serif;;
+          font-weight: 400;
+          font-size: 30px;
+          color: #ac9168;
+          margin: 0 0 5px 51px;
+        }
+
+        .content {
+          background-color: #131719;
+          width: 410px;
+          height: 150px;
+          font-family: "Candara", sans-serif;
+          font-weight: 300;
+          color: #fff;
+          overflow: hidden;
+
+          .textMain {
+            font-size: 23px;
+            margin: 5px 0 26px 9px;
+          }
+
+          .lowerSection {
+            font-weight: 300;
+            font-size: 15px;
+            color: #fff;
+
+            .textPrimary {
+              margin: 0 0 6px 9px;
+            }
+          }
+        }
+      }
+    }
+
+      .bottomLine {
+        display: flex;
+
+        .card {
+          &:first-child {
+            margin: 0px 0 0 83px;
+          }
+
+          &:last-child {
+            margin: 30px 0 0 25px;
+          }
+
+          .textTopCard {
+            font-family: "Viaoda Libre", sans-serif;;
+            font-weight: 400;
+            font-size: 30px;
+            color: #ac9168;
+            margin: 0 0 5px 51px;
+          }
+
+          .content {
+            background-color: #131719;
+            width: 410px;
+            height: 150px;
+            font-family: "Candara", sans-serif;
+            font-weight: 300;
+            color: #fff;
+            overflow: hidden;
+
+            .textMain {
+              font-size: 23px;
+              margin: 5px 0 26px 9px;
+            }
+
+            .lowerSection {
+              font-weight: 300;
+              font-size: 15px;
+              color: #fff;
+
+              .textPrimary {
+                margin: 0 0 6px 9px;
+              }
+          }
+        }
+      }
+    }
+  }
+}
