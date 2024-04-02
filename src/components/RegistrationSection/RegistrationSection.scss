@@ -7,7 +7,20 @@
   font-size: 30px;
   color: #ac9168;
   z-index: 3;
-  .textTop {
 
+  .containerText {
+    margin-left: 120px;
+    font-size: 40px;
+
+    .textBot {
+      margin-left: 62px;
+    }
+  }
+
+
+  .image {
+    position: absolute;
+    bottom: 0;
+    right: 10vw;
   }
 }
