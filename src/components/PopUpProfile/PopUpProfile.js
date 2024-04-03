@@ -10,7 +10,7 @@ const PopUpProfile = () => {
     <div className='popUpProfile'>
       <div className="content">
           <p className='textEntry'>Войдите в ваш аккаунт</p>
-          <input onClick={() => dispatch(setPopUpProfileVisible(false))} className='buttonClose' type='image' src="/img/sn-tg.svg" alt="X"/>
+          <input onClick={() => dispatch(setPopUpProfileVisible(false))} className='buttonClose' type='image' src="/img/x-mark.svg" alt="X"/>
         <div className="line">
           <p className='text'>Email / № телефона</p>
           <input className='input' type="text"/>
