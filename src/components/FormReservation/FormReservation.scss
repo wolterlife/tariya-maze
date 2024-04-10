@@ -1,0 +1,221 @@
+.reservForm {
+  height: 90vh;
+  background: url('../../../public/img/reserv-background.jpeg') no-repeat center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .form {
+    background-color: #131719;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ac9168;
+    margin-bottom: 20vh ;
+
+    .notConfirm {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      .top {
+        display: flex;
+        font-weight: 400;
+        font-size: 25px;
+
+        .textReserve {
+          font-family: "Viaoda Libre", sans-serif;
+          color: #fff;
+          padding-inline: 15px;
+        }
+      }
+
+      .center {
+        display: flex;
+        justify-content: space-evenly;
+        padding-right: 30px;
+
+        .box {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          margin-left: 30px;
+
+          .icon {
+            width: 30px;
+          }
+
+
+
+          .menuDrop {
+            position: relative;
+            display: flex;
+            font-family: "Candara", sans-serif;;
+            border: 1px solid #AC9168;
+            margin-top: 30px;
+            padding: 5px 10px;
+            height: 30px;
+            width: 150px;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.5);
+
+
+            .selector {
+              position: absolute;
+              width: 110px;
+              padding: 20px 30px;
+              top: 40px;
+              left: -1px;
+              background-color: #0F1315;
+              border: 1px solid #AC9168;
+              text-align: center;
+              max-height: 375px;
+              overflow: scroll;
+              -ms-overflow-style: none;  /* Internet Explorer 10+ */
+              scrollbar-width: none;  /* Firefox */
+              //todo: change this if change size of selector
+
+              &::-webkit-scrollbar {
+                display: none;  /* Safari and Chrome */
+              }
+
+              .option {
+                padding: 8px 0 0 0;
+
+                .text {
+                  color: #fff;
+                  font-size: 22px;
+                  font-weight: 400;
+                  margin: -8px 0 0 0;
+                }
+
+                .line {
+                }
+              }
+            }
+
+            .arrow {
+              position: absolute;
+              top: 20px;
+              right: 18px;
+              width: 10px;
+            }
+
+            .arrow-top {
+              position: absolute;
+              top: 20px;
+              right: 18px;
+              width: 10px;
+              transform: rotate(180deg);
+            }
+
+            .text {
+              margin: 6px 0;
+              height: 100%;
+            }
+          }
+
+          .wh {
+            color: #ffffff;
+          }
+        }
+
+        // calendar
+        input[type="date"]::before {
+          content: attr(data-placeholder);
+          width: 100%;
+          color: rgba(255, 255, 255, 0.5);
+        }
+        input[type="date"]:focus::before,
+        input[type="date"]:valid::before { display: none }
+
+        .sd-container {
+          margin-top: 30px;
+          position: relative;
+          float: left;
+        }
+
+        .sd {
+          outline: none;
+          font-family: "Candara", sans-serif;;
+          color: #ffffff;
+          background: #131719;
+          padding: 5px 10px;
+          height: 30px;
+          width: 150px;
+          border: 1px solid #AC9168;
+        }
+
+        .open-button {
+          position: absolute;
+          top: 10px;
+          right: 11px;
+          width: 25px;
+          height: 25px;
+          pointer-events: none;
+        }
+
+        .open-button button {
+          background: #131719;
+          border: none;
+
+          .arrow {
+            width: 10px;
+          }
+        }
+      }
+
+      .button {
+        font-family: "Candara", sans-serif;;
+        cursor: pointer;
+        background-color: transparent;
+        border: 1px solid #AC9168;
+        color: #AC9168;
+        font-weight: 300;
+        padding: 8px 15px;
+        margin-top: 48px;
+        margin-bottom: 38px;
+      }
+    }
+
+    .confirm {
+      height: 303px;
+      width: 636px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      .textMain {
+        font-family: "Viaoda Libre", sans-serif;
+        font-weight: 400;
+        font-size: 40px;
+        color: #fff;
+      }
+
+      .textSecondary {
+        font-family: "Candara", sans-serif;
+        font-weight: 300;
+        font-size: 20px;
+        color: #fff;
+      }
+
+      .button {
+        font-family: "Candara", sans-serif;;
+        cursor: pointer;
+        background-color: transparent;
+        border: 1px solid #AC9168;
+        color: #AC9168;
+        font-weight: 300;
+        padding: 8px 15px;
+        margin-top: 48px;
+        margin-bottom: 38px;
+      }
+    }
+  }
+}

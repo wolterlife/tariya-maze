@@ -30,7 +30,7 @@ const FormRegistration = () => {
       </div>
       <div className="line">
         <p className='text'>Дата рождения:</p>
-        <input className='input' type='text'/>
+        <input className='input' type='date'/>
       </div>
       <div className="line">
         <p className='text'>Адрес:</p>

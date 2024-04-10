@@ -1,7 +1,9 @@
 import React from 'react';
 import './ImgLargeButtons.scss'
+import {useNavigate} from "react-router-dom";
 
 const ImgLargeButtons = () => {
+  const navigate = useNavigate()
   return (
     <div className='backgroundImg'>
       <div className="content">
@@ -11,7 +13,7 @@ const ImgLargeButtons = () => {
           <img src="/img/lines-m-right.svg" alt="lines"/>
         </div>
         <div className="bottomContainer">
-          <div tabIndex='0' className="button">
+          <div onClick={() => navigate('/reserv')} tabIndex='0' className="button">
             <p className='text'>Бронировать стол</p>
           </div>
           <div tabIndex='0' className="button">
