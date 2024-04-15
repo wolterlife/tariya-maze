@@ -12,7 +12,7 @@ const MenuSection = ({title, head = ['', '', ''], menuFirst = [], menuSecond = [
 
   const resMenuFirst = menuFirst.map((el, index) =>
   <div key={index} className='card'>
-    <img src="https://i.imgur.com/Gnt4ngy.png" alt="img"/>
+    <img src={el.imgLink} alt="img"/>
     <div className='textBlock'>
       <p className='name'>{el.name}</p>
       <p className='description'>{el.description}</p>

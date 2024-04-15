@@ -1,14 +1,73 @@
-import '../../normalize.css';
-import ImgMenuPrevius from "../../components/ImgMenuPrevius/ImgMenuPrevius";
+import React from 'react';
 import NavBar from "../../components/NavBar/NavBar";
 import Footer from "../../components/Footer/Footer";
+import ImgDelivery from "../../components/ImgDelivery/ImgDelivery";
 import MenuSection from "../../components/MenuSection/MenuSection";
+import SelectInfo from "../../components/SelectInfo/SelectInfo";
 
-function MenuPage() {
+const SelectPage = () => {
   return (
     <>
       <NavBar/>
-      <ImgMenuPrevius/>
+      <ImgDelivery button={false} />
+      <SelectInfo advice={[
+        {
+          name: 'Жаркое',
+          price: '20/40$',
+          val: '250/500г',
+          description: 'Готовится из части животного, которая запекается в духовом шкафу',
+          imgLink: 'https://i.imgur.com/BkZT3MG.jpeg'
+        },
+        {
+          name: 'Жаркое',
+          price: '20/40$',
+          val: '250/500г',
+          description: 'Готовится из части животного, которая запекается в духовом шкафу',
+          imgLink: 'https://i.imgur.com/Gnt4ngy.png'
+        },
+        {
+          name: 'Жаркое',
+          price: '20/40$',
+          val: '250/500г',
+          description: 'Готовится из части животного, которая запекается в духовом шкафу',
+          imgLink: 'https://i.imgur.com/Gnt4ngy.png'
+        },
+        {
+          name: 'Жаркое',
+          price: '20/40$',
+          val: '250/500г',
+          description: 'Готовится из части животного, которая запекается в духовом шкафу',
+          imgLink: 'https://i.imgur.com/Gnt4ngy.png'
+        },
+        {
+          name: 'Жаркое',
+          price: '20/40$',
+          val: '250/500г',
+          description: 'Готовится из части животного, которая запекается в духовом шкафу',
+          imgLink: 'https://i.imgur.com/Gnt4ngy.png'
+        },
+        {
+          name: 'Жаркое',
+          price: '20/40$',
+          val: '250/500г',
+          description: 'Готовится из части животного, которая запекается в духовом шкафу',
+          imgLink: 'https://i.imgur.com/Gnt4ngy.png'
+        },
+        {
+          name: 'Жаркое',
+          price: '20/40$',
+          val: '250/500г',
+          description: 'Готовится из части животного, которая запекается в духовом шкафу',
+          imgLink: 'https://i.imgur.com/Gnt4ngy.png'
+        },
+        {
+          name: 'Жаркое',
+          price: '20/40$',
+          val: '250/500г',
+          description: 'Готовится из части животного, которая запекается в духовом шкафу',
+          imgLink: 'https://i.imgur.com/Gnt4ngy.png'
+        },
+      ]} />
       <MenuSection
         title='Горячие блюда'
         head={['Мясо', 'Птица', 'Морепродукты']}
@@ -159,6 +218,6 @@ function MenuPage() {
       <Footer/>
     </>
   );
-}
+};
 
-export default MenuPage;
+export default SelectPage;

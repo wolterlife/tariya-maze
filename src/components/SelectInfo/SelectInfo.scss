@@ -1,0 +1,78 @@
+.select {
+  background-color: #1F262A;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding-bottom: 70px;
+
+  .text {
+    font-family: "Viaoda Libre", sans-serif;
+    font-weight: 400;
+    font-size: 40px;
+    color: #fff;
+    padding: 36px 0 24px 0;
+    margin: 0;
+    text-align: center;
+  }
+
+  .textSmall {
+    font-family: "Candara", sans-serif;
+    font-weight: 300;
+    font-size: 30px;
+    text-align: center;
+    color: #fff;
+    margin: 0;
+  }
+
+  .textBeige {
+    font-family: "Candara", sans-serif;
+    font-weight: 300;
+    font-size: 25px;
+    text-align: center;
+    color: #ac9168;
+  }
+
+  .advice {
+    display: flex;
+
+    .card {
+      position: relative;
+      margin: 25px 35px 0 0;
+
+      .img {
+        width: 180px;
+        height: 126px;
+      }
+
+      .text {
+        position: absolute;
+        bottom: 10px;
+        left: 40px;
+        font-family: "Candara", sans-serif;
+        font-weight: 300;
+        font-size: 30px;
+        color: #fff;
+        text-align: center;
+        padding: 0;
+      }
+    }
+  }
+
+  .search {
+    position: absolute;
+    bottom: 0;
+    right: 4%;
+    background: #131719 url('../../../public/img/icon-search.svg') no-repeat bottom 15px right 14px;
+    background-size: 25px;
+    font-family: "Candara", sans-serif;
+    font-size: 25px;
+    border: 0;
+    outline: none;
+    padding: 14px 60px 14px 35px;
+    border-bottom: 1px solid #ac9168;
+    color: white;
+    width: 400px;
+  }
+}

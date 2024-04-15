@@ -17,7 +17,7 @@ const ImgLargeButtons = () => {
             <p className='text'>Бронировать стол</p>
           </div>
           <div tabIndex='0' className="button">
-            <p className='text'>Сделать заказ</p>
+            <p onClick={() => navigate('/delivery')} className='text'>Доставка</p>
           </div>
         </div>
       </div>
