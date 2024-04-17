@@ -77,17 +77,19 @@ const SelectPage = () => {
             price: '20/40$',
             val: '250/500г',
             description: 'Готовится из части животного, которая запекается в духовом шкафу',
-            imgLink: 'https://i.imgur.com/BkZT3MG.jpeg'
+            imgLink: 'https://i.imgur.com/BkZT3MG.jpeg',
+            isDiscount: false,
           },
           {
-            name: 'Жаркое',
+            name: 'Жарк',
             price: '20/40$',
             val: '250/500г',
             description: 'Готовится из части животного, которая запекается в духовом шкафу',
-            imgLink: 'https://i.imgur.com/Gnt4ngy.png'
+            imgLink: 'https://i.imgur.com/Gnt4ngy.png',
+            isDiscount: true,
           },
           {
-            name: 'Жаркое',
+            name: 'Жарк',
             price: '20/40$',
             val: '250/500г',
             description: 'Готовится из части животного, которая запекается в духовом шкафу',
