@@ -1,0 +1,373 @@
+.userProfile {
+  position: relative;
+  display: flex;
+  justify-content: right;
+  background-color: #1F262A;
+
+  .containerInfo {
+    position: absolute;
+    top: 52px;
+    left: 222px;
+    background-color: #171C1F;
+    border: 1px solid #AC9168;
+    padding: 20px 34px;
+
+    .text {
+      font-family: "Viaoda Libre", sans-serif;
+      font-weight: 400;
+      font-size: 25px;
+      color: #fff;
+      margin: 0;
+      padding-bottom: 8px;
+    }
+  }
+
+  .user {
+    margin-left: 47px;
+
+    .text {
+      font-family: Candara, sans-serif;
+      font-weight: 300;
+      font-size: 20px;
+      color: #fff;
+      border-bottom: 1px solid #ac9168;
+      padding-bottom: 5px;
+      padding-right: 25px;
+      margin: 12px 0;
+      width: fit-content;
+    }
+
+    .button {
+      font-family: "Candara", sans-serif;;
+      font-weight: 400;
+      font-size: 14px;
+      color: #ac9168;
+      border: 0.67px solid #ac9168;
+      padding: 8px 15px;
+      background-color: #1F262A;
+      cursor: pointer;
+      margin-top: 24px;
+    }
+  }
+
+  .right {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 31vw;
+    margin-right: 17vw;
+
+    .countOrders {
+      display: flex;
+      border-bottom: 1px solid #AC9168;
+      height: fit-content;
+
+      .textCount {
+        font-family: Candara, sans-serif;
+        font-weight: 400;
+        border: 1px solid #ac9168;
+        border-bottom: 0;
+        width: 40px;
+        height: 33px;
+        font-size: 25px;
+        color: #ac9168;
+        background: rgba(0, 0, 0, 0.4);
+        text-align: center;
+        margin: 0 11px 0 0;
+      }
+
+      .textOrders {
+        font-family: Candara, sans-serif;
+        font-weight: 300;
+        font-size: 25px;
+        color: #fff;
+        margin: 0;
+      }
+    }
+
+    .alert {
+      border: 2px solid #000000;
+      margin-top: 20px;
+      position: relative;
+
+      .text {
+        font-family: Candara, sans-serif;
+        font-weight: 300;
+        font-size: 15px;
+        color: #fff;
+        margin: 0;
+        padding: 10px 23px;
+      }
+
+      .img {
+        right: -5px;
+        top: -1px;
+        position: absolute;
+      }
+    }
+
+    .settings {
+      margin-top: 23px;
+    }
+  }
+}
+
+.hiden {
+  display: none;
+}
+
+.historyPart {
+  line-height: 0;
+  position: relative;
+
+  .background {
+    width: 100%;
+    height: 100vh;
+  }
+
+  .inside {
+    position: absolute;
+    width: 65vw;
+    top: 70px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #131719;
+
+    .textHistory {
+      font-family: "Viaoda Libre", sans-serif;
+      font-weight: 400;
+      font-size: 30px;
+      color: #fff;
+      text-align: center;
+      margin: 22px 0;
+    }
+
+    .close {
+      position: absolute;
+      right: 12px;
+      top: 12px;
+      width: 20px;
+      cursor: pointer;
+    }
+
+    .lineSecond {
+      display: flex;
+      justify-content: center;
+      border-top: 1px solid #AC9168;
+
+      .textDeliv {
+        font-family: "Candara", sans-serif;
+        font-weight: 300;
+        font-size: 25px;
+        color: #ac9168;
+        cursor: pointer;
+      }
+
+      .textSlash {
+        font-family: "Candara", sans-serif;
+        font-weight: 300;
+        font-size: 25px;
+        color: #fff;
+      }
+
+      .textReserv {
+        font-family: "Candara", sans-serif;
+        font-weight: 300;
+        font-size: 25px;
+        color: #fff;
+        cursor: pointer;
+      }
+    }
+
+    .cards {
+      max-height: 380px;
+      overflow-y: scroll;
+
+      &::-webkit-scrollbar {
+        width: 10px; /* ширина scrollbar */
+      }
+
+      &::-webkit-scrollbar-track {
+        background: #AC9168; /* цвет дорожки */
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: #0F1315; /* цвет плашки */
+        //border-radius: 2px; /* закругления плашки */
+      }
+
+      .card {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #AC9168;
+        padding: 25px 28px;
+        height: 80px;
+        border-bottom: 1px solid #1F262A;
+
+        .textActive {
+          // todo: left -60px; or now
+          left: -50px;
+          height: 20px;
+          color: #AC9168;
+          font-weight: 300;
+          font-family: "Candara", sans-serif;
+          border: 1px solid #AC9168;
+          z-index: 999;
+          position: absolute;
+          background-color: #131719;
+          transform: rotate(-90deg);
+          margin: 0;
+          padding-top: 24px;
+          padding-inline: 12px;
+        }
+
+        .part {
+          position: relative;
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          width: 18vw;
+          text-align: center;
+          line-height: 1.2;
+
+          .head {
+            display: none;
+          }
+
+          .text {
+            font-family: "Candara", sans-serif;
+            font-weight: bold;
+            font-size: 20px;
+            color: #0c0f11;
+          }
+        }
+
+        &:first-child {
+          align-items: flex-start;
+          padding: 12px 28px 25px 28px;
+
+          .head {
+            display: block;
+            font-weight: 400;
+            font-size: 20px;
+            text-align: center;
+            color: #131719;
+            font-family: Candara, sans-serif;
+            border-bottom: 1px solid black;
+            margin: 0;
+            width: 10vw;
+          }
+
+          .textActive {
+            // todo: left -60px; or now
+            top: 30px;
+          }
+        }
+      }
+    }
+  }
+
+  .button {
+    position: absolute;
+    right: 17vw;
+    bottom: 9vh;
+    border: 0.67px solid #ac9168;
+    padding: 8px 15px;
+    color: #ac9168;
+    font-family: "Candara", sans-serif;
+    font-weight: 300;
+    background-color: transparent;
+    cursor: pointer;
+  }
+}
+
+.reviewPopUp {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  z-index: 999;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.6);
+  top: 0;
+
+
+
+  .review {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    background: #131719;
+    width: 400px;
+    color: white;
+    padding: 25px;
+    border: 1px solid #ac9168;
+
+    .xmark {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 15px;
+    }
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+
+      .name {
+        font-family: "Viaoda Libre", sans-serif;
+        font-weight: 400;
+        font-size: 25px;
+        color: #fff;
+      }
+
+      .stars {
+        display: flex;
+        align-items: center;
+
+        .star {
+          cursor: pointer;
+          width: 25px;
+          height: fit-content;
+        }
+      }
+    }
+
+    .input {
+      font-family: "Candara", sans-serif;
+      border: 1px solid #ac9168;
+      width: 98%;
+      height: 110px;
+      color: white;
+      resize: none;
+      padding: 8px 0 0 8px;
+      font-size: 20px;
+      background-color: #131719;
+    }
+
+    .buttonSend {
+      width: fit-content;
+      border: 1px solid  #ac9168;
+      padding: 8px 15px;
+      background-color: transparent;
+      color: #AC9168;
+      font-family: "Candara", sans-serif;
+      margin-top: 25px;
+      font-weight: 300;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #171c1f;
+      }
+    }
+  }
+}

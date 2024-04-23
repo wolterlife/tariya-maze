@@ -7,6 +7,8 @@ import RegistrationPage from './features/Registration/RegistrationPage';
 import ReservPage from "./features/Reserv/ReservPage";
 import DeliveryPage from "./features/Delivery/DeliveryPage";
 import SelectPage from "./features/Select/SelectPage";
+import ProfilePage from './features/Profile/ProfilePage';
+import SettingsPage from './features/Settings/SettingsPage';
 // TODO: Перенести popUp профиль в навбар
 // TODO: Адаптив слазит в футере
 // TODO: Футер некоторые ссылки не в самом верху из-за этого не кликабельны
@@ -23,6 +25,9 @@ function App() {
         <Route path='/reserv' element={<ReservPage/>}/>
         <Route path='/delivery' element={<DeliveryPage/>}/>
         <Route path='/select' element={<SelectPage/>}/>
+        <Route path='/profile' element={<ProfilePage/>}/>
+        <Route path='/settings' element={<SettingsPage/>}/>
+
       </Routes>
     </>
   );

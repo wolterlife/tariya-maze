@@ -1,0 +1,109 @@
+.settings {
+  position: relative;
+  line-height: 0;
+  background-color: #1F262A;
+
+  .image {
+    margin-top: 40vh;
+    width: 100%;
+  }
+
+  .window {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    line-height: 1;
+    top: 0;
+    width: 80vw;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    height: 72vh;
+    background-color: #131719;
+
+    .leftImg {
+      position: absolute;
+      left: -16px;
+      height: 100%;
+    }
+
+    .rightImg {
+      position: absolute;
+      right: -16px;
+      height: 100%;
+    }
+
+    .info {
+      display: flex;
+      font-family: "Candara", sans-serif;
+      font-weight: 300;
+      justify-content: center;
+      padding: 80px 0 50px ;
+
+
+      .brownContainer {
+       color: #AC9168;
+        padding: 0 30px;
+        font-size: 16px;
+
+        .text {
+          margin-top: 37px;
+
+
+        &:first-child {
+          margin-top: 18px;
+        }
+        }
+      }
+
+      .whiteContainer {
+        color: white;
+        font-size: 18px;
+
+        .line {
+          display: flex;
+          align-items: center;
+
+          .editImg {
+            width: 16px;
+            height: 16px;
+            padding: 0 0 0 15px;
+            cursor: pointer;
+          }
+        }
+
+
+      }
+
+
+
+    }
+
+    .buttonPass {
+      border: 1px solid #ac9168;
+      padding: 8px 15px;
+      color: #AC9168;
+      background-color: transparent;
+      font-family: "Candara", sans-serif;
+      font-weight: 300;
+      width: fit-content;
+      font-size: 15px;
+
+    }
+
+    .xmark {
+      position: absolute;
+      top: 7px;
+      right: 15px;
+      z-index: 9;
+      width: 20px;
+      cursor: pointer;
+    }
+
+
+
+  }
+
+}

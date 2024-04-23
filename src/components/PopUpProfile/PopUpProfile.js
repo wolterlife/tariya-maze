@@ -19,7 +19,7 @@ const PopUpProfile = () => {
           <p className='text'>Пароль:</p>
           <input className='input' type="password"/>
         </div>
-        <button className="buttonLogin">Войти</button>
+        <button onClick={() => navigate('/profile')} className="buttonLogin">Войти</button>
         <p className='textInfo'>Если нет аккаунта необходимо пройти регистрацию</p>
         <input onClick={() => navigate('/registration')} className='buttonRegister' type='button' value='Зарегистрироваться' />
         <img className='backgroundTop' src="/img/reg-top.svg" alt="background-img"/>
