@@ -9,9 +9,6 @@ const SettingsPage = () => {
       <NavBar/>
       <Settings/>
       <Footer/>
-
-
-
     </>
   );
 };

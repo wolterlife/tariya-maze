@@ -13,6 +13,9 @@ import SettingsPage from './features/Settings/SettingsPage';
 // TODO: Адаптив слазит в футере
 // TODO: Футер некоторые ссылки не в самом верху из-за этого не кликабельны
 // TODO: Поиск функционал
+// TODO: Картинки не должны быть кликабельны
+// TODO: Ховеры
+// TODO: Акции текст сползп
 function App() {
   return (
     <>

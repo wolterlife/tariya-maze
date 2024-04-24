@@ -8,7 +8,6 @@ const UserProfile = ({ orders = [], reservations = [] }) => {
   const [isHistoryVisible, setHistoryVisible] = useState(false)
   const [visibleReview, setVisibleReview] = useState(false); //todo: change to false
   const [starStatus, setStarStatus] = useState(0)
-  const [visibleSettings, setVisibleSettings] = useState(true)
 
   const resOrders = orders.map((el) =>
     <div key={el.id} className="card">
