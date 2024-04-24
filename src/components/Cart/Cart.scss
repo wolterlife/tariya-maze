@@ -1,0 +1,510 @@
+.cart {
+
+  .imgBackground {
+    display: flex;
+    justify-content: center;
+    background: url("../../../public/img/backgroundDelivery.png");
+    height: 87vh;
+    width: 100%;
+    background-size: cover;
+    position: relative;
+
+    .linesLeft {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+    }
+
+    .linesRight {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+
+    .cartWindow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: absolute;
+      top: 30px;
+
+
+      .topWindow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #1F262A;
+        border-top: 2px solid #ac9168;
+        width: 13vw;
+        height: 6vh;
+        z-index: 99;
+
+        .topText {
+          font-weight: 300;
+          font-size: 26px;
+          color: #ac9168;
+          margin: 0 7px;
+          font-family: "Viaoda Libre", sans-serif;
+
+
+        }
+      }
+
+      .mainWindow {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 35px;
+        background-color: #1F262A;
+        width: 65vw;
+        height: 67vh;
+        border-bottom: 2px solid #ac9168;
+        border-top: 10px solid #ac9168;
+
+        .main {
+          display: flex;
+
+          .orderField {
+            width: 600px;
+            height: 340px;
+            background: #171c1f;
+            margin-top: 30px;
+            margin-left: 20px;
+            overflow-y: scroll;
+
+            &::-webkit-scrollbar {
+              width: 10px; /* ширина scrollbar */
+            }
+
+            &::-webkit-scrollbar-track {
+              background: #0F1315; /* цвет дорожки */
+            }
+
+            &::-webkit-scrollbar-thumb {
+              background-color: #AC9168; /* цвет плашки */
+              border-radius: 2px; /* закругления плашки */
+            }
+
+            .card {
+              position: relative;
+              display: flex;
+              width: 450px;
+              height: 86px;
+              margin-top: 30px;
+              margin-left: 40px;
+              padding-right: 70px;
+
+              &:nth-child(even) {
+                margin-left: 40px;
+              }
+
+              .textBlock {
+                display: flex;
+                font-family: "Candara", sans-serif;
+                font-weight: 400;
+                font-size: 20px;
+                color: #fff;
+                margin-left: 15px;
+                width: 400px;
+
+
+                .name {
+                  margin: 0;
+                }
+
+                .description {
+                  font-family: "Candara", sans-serif;;
+                  font-weight: 300;
+                  margin: 4px 0 0 0;
+                  font-size: 15px;
+                }
+              }
+
+              .val {
+                margin: 0;
+              }
+
+              .price {
+
+              }
+
+            }
+
+
+            .buttons {
+              display: flex;
+              position: absolute;
+              right: 25px;
+              max-height: 27px;
+              max-width: 78px;
+
+              .count {
+                position: absolute;
+                right: 0px;
+                font-family: "Candara", sans-serif;
+                font-weight: 400;
+                font-size: 20px;
+                color: #fff;
+                margin: 0 12px 0 0;
+                padding-bottom: 4px;
+              }
+
+              .add {
+                position: absolute;
+                cursor: pointer;
+                left: 0px;
+                width: 25px;
+
+                &:hover {
+                  background-color: rgba(255, 255, 255, 0.2);
+                  border-radius: 100%;
+                }
+              }
+
+              .dell {
+                position: absolute;
+                width: 25px;
+                right: 40px;
+                top: 0;
+                cursor: pointer;
+
+                &:hover {
+                  background-color: rgba(255, 255, 255, 0.2);
+                  border-radius: 100%;
+                }
+              }
+            }
+
+          }
+
+          .cartInfo {
+            margin: 30px 65px 0 25px;
+
+
+            .nameText {
+              color: white;
+              font-family: "Viaoda Libre", sans-serif;
+              font-size: 25px;
+              margin: 0 0 30px;
+            }
+
+            .info {
+              display: flex;
+              align-items: center;
+              padding-bottom: 25px;
+
+
+              .iconsLoc {
+                width: 25px;
+                height: 25px;
+                padding-right: 15px;
+              }
+
+              .infoText {
+                font-family: Candara, sans-serif;
+                font-size: 17px;
+                color: #ffffff;
+                margin: 0;
+                font-weight: 300;
+                padding-bottom: 6px;
+                border-bottom: 1px solid #AC9168;
+                width: 230px;
+              }
+
+              .iconsUs {
+                width: 20px;
+                padding-right: 15px;
+              }
+
+              .iconsTime {
+                width: 20px;
+                padding-right: 15px;
+              }
+
+            }
+
+            .comment {
+              display: flex;
+              flex-direction: column;
+
+
+              .commentsText {
+                color: #AC9168;
+                font-family: Candara, sans-serif;
+                font-weight: 300;
+                font-size: 15px;
+                margin: 0 0 5px;
+
+              }
+
+              .comInput {
+                background: #171C1F;
+                border-bottom: 1px solid #ac9168;
+                width: 260px;
+                height: 100px;
+                outline: none;
+                resize: none;
+                border-left: none;
+                border-top: none;
+                border-right: none;
+
+                color: white;
+                font-size: 15px;
+                font-weight: 300;
+                font-family: Candara, sans-serif;
+
+
+              }
+
+            }
+          }
+        }
+
+        .bottomField {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          color: white;
+          margin: 30px 40px 0 50px;
+
+
+          .resultPrice {
+            display: flex;
+            align-items: center;
+            font-family: Candara, sans-serif;
+            font-weight: 300;
+            font-size: 20px;
+            margin: 0;
+
+
+            .priseText {
+              font-family: Candara, sans-serif;
+              font-size: 25px;
+              font-weight: 400;
+              margin: 0;
+              padding-left: 10px;
+
+
+            }
+
+          }
+
+          .button {
+            color: white;
+            font-family: Candara, sans-serif;
+            font-size: 20px;
+            font-weight: 100;
+            background: #131719;
+            border: 1px solid #fff;
+            border-radius: 3px;
+            width: fit-content;
+            padding: 5px 20px;
+            cursor: pointer;
+
+          }
+        }
+      }
+
+      .confirmWindow {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 32px;
+        background-color: #1F262A;
+        width: 55vw;
+        height: 67vh;
+        border-bottom: 2px solid #ac9168;
+        border-top: 10px solid #ac9168;
+
+        .info {
+          display: flex;
+          justify-content: center;
+          margin-top: 40px;
+
+          .drownContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            color: #AC9168;
+            font-size: 15px;
+            font-weight: 300;
+            font-family: "Candara", sans-serif;
+            padding-top: 3px;
+
+
+            .text {
+              margin: 0;
+              padding-bottom: 15px;
+            }
+
+          }
+        }
+
+        .whiteContainer {
+          margin-left: 20px;
+          color: white;
+
+          .nameText {
+            font-family: "Viaoda Libre", sans-serif;
+            font-size: 20px;
+            margin: 0;
+            padding-bottom: 12px;
+
+          }
+
+          .text {
+            font-size: 15px;
+            font-family: "Candara", sans-serif;
+            font-weight: 300;
+            margin: 0;
+            padding-bottom: 15px;
+          }
+
+          .menuDrop {
+            position: relative;
+            display: flex;
+            font-family: "Candara", sans-serif;;
+            border: 1px solid #AC9168;
+            padding: 5px 10px;
+            height: 20px;
+            width: 150px;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.5);
+
+
+            .selector {
+              position: absolute;
+              width: 110px;
+              padding: 10px 30px;
+              top: 29px;
+              left: -1px;
+              background-color: #0F1315;
+              border: 1px solid #AC9168;
+              text-align: center;
+              max-height: 375px;
+              overflow: scroll;
+              -ms-overflow-style: none; /* Internet Explorer 10+ */
+               /* Firefox */
+              //todo: change this if change size of selector
+
+              &::-webkit-scrollbar {
+                display: none; /* Safari and Chrome */
+              }
+
+
+
+
+
+            }
+
+            .textBox {
+              color: rgba(255, 255, 255, 0.6);
+              font-size: 15px;
+              font-weight: 300;
+              margin: 0 0 0 0;
+            }
+
+
+            .arrow {
+              position: absolute;
+              top: 14px;
+              right: 18px;
+              width: 10px;
+            }
+
+            .arrow-top {
+              position: absolute;
+              top: 12px;
+              right: 18px;
+              width: 10px;
+              transform: rotate(180deg);
+            }
+
+            .textPay {
+              margin: 0;
+              height: 100%;
+              font-weight: 300;
+            }
+          .wh {
+             color: #ffffff;
+           }
+        }
+      }
+
+
+
+        .buttons {
+          display: flex;
+          justify-content: center;
+          margin-top: 45px;
+
+
+          .buttCancel {
+            color: white;
+            font-weight: 300;
+            font-family: "Candara", sans-serif;
+            background-color: #131719;
+            border: 1px solid #fff;
+            border-radius: 3px;
+            padding: 4px 41px;
+            margin-right: 60px;
+            cursor: pointer;
+          }
+
+          .buttDeliver {
+            font-family: "Candara", sans-serif;
+            color: white;
+            font-weight: 300;
+            background-color: #131719;
+            border: 1px solid #fff;
+            border-radius: 3px;
+            padding: 4px 41px;
+            margin-left: 60px;
+            cursor: pointer;
+          }
+        }
+
+      }
+    }
+
+    .cartEnd {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #131719;
+      border: 1px solid #ac9168;
+      width: 38vw;
+      height: 45vh;
+      margin-top: 15vh;
+      color: white;
+
+      .firstText {
+        font-family: "Viaoda Libre", sans-serif;
+        font-size: 36px;
+        margin-top: 60px;
+
+      }
+
+      .infoText {
+        font-family: "Candara", sans-serif;
+        font-weight: 300;
+        font-size: 20px;
+        margin-top: 40px;
+
+      }
+
+      .button {
+        color: #AC9168;
+        border: 1px solid #AC9168;
+        background-color: transparent;
+        font-family: "Candara", sans-serif;
+        font-size: 15px;
+        font-weight: 300;
+        padding: 7px 15px;
+        margin-top: 55px;
+        cursor: pointer;
+      }
+
+    }
+  }
+}

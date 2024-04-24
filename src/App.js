@@ -9,6 +9,8 @@ import DeliveryPage from "./features/Delivery/DeliveryPage";
 import SelectPage from "./features/Select/SelectPage";
 import ProfilePage from './features/Profile/ProfilePage';
 import SettingsPage from './features/Settings/SettingsPage';
+import CartPage from "./features/Cart/CartPage";
+
 // TODO: Перенести popUp профиль в навбар
 // TODO: Адаптив слазит в футере
 // TODO: Футер некоторые ссылки не в самом верху из-за этого не кликабельны
@@ -30,6 +32,7 @@ function App() {
         <Route path='/select' element={<SelectPage/>}/>
         <Route path='/profile' element={<ProfilePage/>}/>
         <Route path='/settings' element={<SettingsPage/>}/>
+        <Route path='/cart' element={<CartPage/>}/>
 
       </Routes>
     </>
