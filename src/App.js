@@ -11,6 +11,7 @@ import ProfilePage from './features/Profile/ProfilePage';
 import SettingsPage from './features/Settings/SettingsPage';
 import CartPage from "./features/Cart/CartPage";
 import AdminPage from './features/Admin/AdminPage';
+import NotFoundPage from './features/NotFound/NotFoundPage';
 
 // TODO: Перенести popUp профиль в навбар
 // TODO: Адаптив слазит в футере
@@ -24,6 +25,7 @@ function App() {
     <>
       <Routes>
         <Route path='/' element={<HomePage/>}/>
+        <Route path='*' element={<NotFoundPage/>}/>
         <Route path='/news' element={<NewsPage/>}/>
         <Route path='/menu' element={<MenuPage/>}/>
         <Route path='/discounts' element={<DiscountsPage/>}/>
