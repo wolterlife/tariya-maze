@@ -10,6 +10,7 @@ import SelectPage from "./features/Select/SelectPage";
 import ProfilePage from './features/Profile/ProfilePage';
 import SettingsPage from './features/Settings/SettingsPage';
 import CartPage from "./features/Cart/CartPage";
+import AdminPage from './features/Admin/AdminPage';
 
 // TODO: Перенести popUp профиль в навбар
 // TODO: Адаптив слазит в футере
@@ -33,7 +34,7 @@ function App() {
         <Route path='/profile' element={<ProfilePage/>}/>
         <Route path='/settings' element={<SettingsPage/>}/>
         <Route path='/cart' element={<CartPage/>}/>
-
+        <Route path='/admin' element={<AdminPage/>}/>
       </Routes>
     </>
   );

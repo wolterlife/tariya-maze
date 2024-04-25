@@ -1,0 +1,42 @@
+.adminHead {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #1F262A;
+  position: relative;
+
+  .darkContainer {
+    position: absolute;
+    font-family: "Viaoda Libre", sans-serif;
+    color: white;
+    font-size: 25px;
+    background-color: #171C1F;
+    border: 1px solid #ac9168;
+    padding: 6px 12px;
+    left: 24vw;
+    top: 0;
+  }
+
+  .navMenu {
+    width: 57vw;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 300;
+    font-size: 25px;
+    color: #ac9168;
+    font-family: Candara, sans-serif;
+
+    .option {
+      border-bottom: 1px solid #AC9168;
+      padding-inline: 8px;
+      padding: 0 8px 2px;
+      cursor: pointer;
+    }
+
+    .selected {
+      color: white;
+      border-bottom: 0;
+    }
+  }
+}
