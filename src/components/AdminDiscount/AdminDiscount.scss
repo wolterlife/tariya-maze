@@ -1,0 +1,198 @@
+.showCards {
+  position: relative;
+
+  .imgPlus {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: -80px;
+    text-align: center;
+    cursor: pointer;
+
+
+  }
+  .discountsContainer {
+    display: flex;
+    width: 73vw;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    height: 100%;
+    margin-top: 15vh;
+    margin-bottom: 50px;
+
+    .discountCards {
+      display: flex;
+      align-items: center;
+      position: relative;
+      background-color: #131719;
+      color: white;
+      font-family: "Viaoda Libre", sans-serif;
+      border: 1px solid #AC9168;
+      font-size: 20px;
+      text-align: center;
+      width: 260px;
+      height: 100px;
+      margin: 25px 50px;
+
+      p {
+        margin: 0;
+      }
+
+      .imgEdit {
+        position: absolute;
+        width: 17px;
+        top: 8px;
+        right: 10px;
+        cursor: pointer;
+      }
+
+      .imgDelete {
+        position: absolute;
+        width: 17px;
+        right: 20px;
+        bottom: 11px;
+        cursor: pointer;
+      }
+    }
+
+    .deleteCard {
+      position: relative;
+      background-color: #131719;
+      color: white;
+      font-family: "Candara Light", sans-serif;
+      border: 1px solid #AC9168;
+      font-size: 26px;
+      text-align: center;
+      width: 260px;
+      height: 100px;
+      margin: 25px 50px;
+
+      p {
+        margin: 10px;
+      }
+
+      .button {
+        color: #AC9168;
+        background: transparent;
+        border: 1px solid #AC9168;
+        font-size: 17px;
+        padding: 8px 15px;
+        margin: 3px 25px;
+
+        &:hover{
+          background: #0C0F11;
+      }
+
+
+
+      }
+
+    }
+  }
+}
+
+.editContainer {
+  position: relative;
+  background-color: #131719;
+  border-bottom: 1px solid #AC9168;
+  border-top: 3px solid #AC9168;
+  width: 50vw;
+  height: 48vh;
+  margin-top: 30px;
+  margin-bottom: 70px;
+  color: white;
+  font-family: "Candara Light", sans-serif;
+  font-size: 15px;
+
+  .xIcone {
+    position: absolute;
+    width: 20px;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+
+
+  }
+
+  .nameDiscount {
+
+    .text {
+      margin-top: 20px;
+      margin-left: 3vw;
+    }
+
+    .textName {
+      background: #0C0F11;
+      border-bottom: 1px solid #ac9168;
+      width: 44vw;
+      height: 30px;
+      outline: none;
+      resize: none;
+      border-left: none;
+      border-top: none;
+      border-right: none;
+      color: white;
+      font-family: "Viaoda Libre", sans-serif;
+      font-size: 20px;
+      text-align: center;
+      margin: 0 3vw;
+      padding-top: 10px;
+
+    }
+
+    .textLimit {
+      color: #AC9168;
+      font-size: 12px;
+      margin-right: 3vw;
+      text-align: right;
+      margin-top: 7px;
+    }
+
+  }
+
+  .descrDiscount {
+
+    .text {
+      margin-top: 32px;
+      margin-left: 3vw;
+    }
+
+    .textDescr {
+      background: #0C0F11;
+      border-bottom: 1px solid #ac9168;
+      width: 41vw;
+      height: 60px;
+      outline: none;
+      resize: none;
+      border-left: none;
+      border-top: none;
+      border-right: none;
+      color: white;
+      font-family: "Viaoda Libre", sans-serif;
+      font-size: 17px;
+      margin: 0 3vw;
+      padding: 10px 30px;
+
+    }
+
+  }
+
+  .button {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    background-color: transparent;
+    border: 1px solid #AC9168;
+    color: #AC9168;
+    padding: 5px 15px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #0C0F11;
+    }
+
+  }
+}
