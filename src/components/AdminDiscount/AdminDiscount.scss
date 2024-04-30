@@ -1,18 +1,32 @@
 .showCards {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   position: relative;
 
   .imgPlus {
-    position: absolute;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    top: -80px;
-    text-align: center;
     cursor: pointer;
 
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 100px;
+    }
 
+    &:hover + .textAddDiscount{
+      visibility: visible;
+    }
   }
+
+
+  .textAddDiscount {
+    color: #FFFFFF;
+    font-family: "Candara", sans-serif;
+    text-align: center;
+    font-weight: 300;
+    visibility: hidden;
+  }
+
   .discountsContainer {
     display: flex;
     width: 73vw;
@@ -20,7 +34,6 @@
     flex-wrap: wrap;
     align-content: flex-start;
     height: 100%;
-    margin-top: 15vh;
     margin-bottom: 50px;
 
     .discountCards {
@@ -81,11 +94,11 @@
         font-size: 17px;
         padding: 8px 15px;
         margin: 3px 25px;
+        cursor: pointer;
 
-        &:hover{
+        &:hover {
           background: #0C0F11;
-      }
-
+        }
 
 
       }

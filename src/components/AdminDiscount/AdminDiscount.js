@@ -1,83 +1,82 @@
 import React, {useState} from 'react';
 import './AdminDiscount.scss'
-import {dellFromCart, pushToCart} from "../../redux/commonSlice";
+import CardDiscount from '../CardDiscount/CardDiscount';
 
 const AdminDiscount = () => {
   const [showCards, setShowCards] = useState(true)
-  const [deleteCard, setDeleteCard]=useState(false)
+  const [selectedEdit, setSelectedEdit] = useState({})
+  const [inputName, setInputName] = useState('')
+  const [inputDescription, setInputDescription] = useState('')
+
+  const arr = [
+    {
+      name: "Скидки 30% постоянным клиентам",
+      description: "рарара",
+    },
+    {
+      name: "Комплимент от заведения в честь дня рождения",
+      description: "fefefefefefe",
+    },
+    {
+      name: "Скидки 30% постоянным клиентам",
+      description: "рарара",
+    },
+    {
+      name: "Комплимент от заведения в честь дня рождения",
+      description: "рарара",
+    }
+    ,
+    {
+      name: "Скидки 30% постоянным клиентам",
+      description: "рарара",
+    },
+    {
+      name: "Скидки 30% постоянным клиентам",
+      description: "рарара",
+    },
+    {
+      name: "Скидки 30% постоянным клиентам",
+      description: "рарара",
+    }
+  ]
+
+  const res = arr.map((el, idx) => <CardDiscount key={idx} el={el} setCardsFoo={setShowCards}
+                                                 setEditFoo={setSelectedEdit}/>)
+
   return (
     <div>
       {showCards ?
         <div className="showCards">
-          <img onClick={()=>setShowCards(false)} className='imgPlus' src="/img/icon-plus.svg" alt="plus"/>
+          <img onClick={() => {
+            setSelectedEdit({})
+            setShowCards(false)
+          }} className='imgPlus' src="/img/icon-plus.svg" alt="plus"/>
+          <p className='textAddDiscount'>Добавить акцию</p>
           <div className="discountsContainer">
-            {deleteCard ?
-              <div className="deleteCard">
-                <p>Удалить запись?</p>
-                <input onClick={()=>setDeleteCard(false)} className='button' type="button" value='Нет'/>
-                <input onClick={()=>setDeleteCard(false)} className='button' type="button" value='Да'/>
-              </div>
-              :
-              <div className="discountCards">
-                <p>Скидки 30% постоянным клиентам</p>
-                <img className='imgEdit' src="/img/edit.svg" alt="edit"/>
-                <img onClick={()=>setDeleteCard(true)} className='imgDelete' src="/img/icon-delete.svg" alt="delete"/>
-              </div>
-            }
-
-            <div className="discountCards">
-              <p>Комплимент от заведения в честь дня рождения</p>
-              <img className='imgEdit' src="/img/edit.svg" alt="edit"/>
-              <img className='imgDelete' src="/img/icon-delete.svg" alt="delete"/>
-            </div>
-            <div className="discountCards">
-              <p>Организация праздников по супер цене</p>
-              <img className='imgEdit' src="/img/edit.svg" alt="edit"/>
-              <img className='imgDelete' src="/img/icon-delete.svg" alt="delete"/>
-            </div>
-            <div className="discountCards">
-              <p>Скидки 30% постоянным клиентам</p>
-              <img className='imgEdit' src="/img/edit.svg" alt="edit"/>
-              <img className='imgDelete' src="/img/icon-delete.svg" alt="delete"/>
-            </div>
-            <div className="discountCards">
-              <p>Скидки 30% постоянным клиентам</p>
-              <img className='imgEdit' src="/img/edit.svg" alt="edit"/>
-              <img className='imgDelete' src="/img/icon-delete.svg" alt="delete"/>
-            </div>
-            <div className="discountCards">
-              <p>Скидки 30% постоянным клиентам</p>
-              <img className='imgEdit' src="/img/edit.svg" alt="edit"/>
-              <img className='imgDelete' src="/img/icon-delete.svg" alt="delete"/>
-            </div>
-            <div className="discountCards">
-              <p>Скидки 30% постоянным клиентам</p>
-              <img className='imgEdit' src="/img/edit.svg" alt="edit"/>
-              <img className='imgDelete' src="/img/icon-delete.svg" alt="delete"/>
-            </div>
-            <div className="discountCards">
-              <p>Скидки 30% постоянным клиентам</p>
-              <img className='imgEdit' src="/img/edit.svg" alt="edit"/>
-              <img className='imgDelete' src="/img/icon-delete.svg" alt="delete"/>
-            </div>
-            {/*<div className="discountCards">*/}
-            {/*  <p>Скидки 30% постоянным клиентам</p>*/}
-            {/*  <img className='imgEdit' src="/img/edit.svg" alt="edit"/>*/}
-            {/*  <img className='imgDelete' src="/img/icon-delete.svg" alt="delete"/>*/}
-            {/*</div>*/}
+            {res}
           </div>
         </div>
-      :
+        :
         <div className="editContainer">
-          <img onClick={()=>setShowCards(true)} className='xIcone' src="/img/x-mark.svg" alt="x"/>
+          <img onClick={() => setShowCards(true)} className='xIcone' src="/img/x-mark.svg" alt="x"/>
           <div className="nameDiscount">
             <p className="text">Акция:</p>
-            <textarea className='textName' name="textName" value='Комплимент от заведения в честь дня рождения'/>
+            <textarea
+              className='textName'
+              name="textName"
+              defaultValue={selectedEdit.name}
+              onChange={(v) => setInputName(v.target.value) }
+            />
             <p className="textLimit">макс число символов: 40</p>
           </div>
           <div className="descrDiscount">
             <p className="text">Описание:</p>
-            <textarea className='textDescr' name="textDescr" value='Скидка на меню: В течение недели с вашим днем рождения вы получаете 20% скидку на всё меню или на определенную категорию блюд (например, выпечка, десерты или основные блюда).'/>
+            <textarea
+              className='textDescr'
+              name="textDescr"
+              defaultValue={selectedEdit.description}
+              onChange={(v) => setInputDescription(v.target.value) }
+            />
           </div>
           <input className='button' type="button" value='Сохранить'/>
         </div>
