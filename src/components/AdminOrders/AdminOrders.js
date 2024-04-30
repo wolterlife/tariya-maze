@@ -81,7 +81,6 @@ const AdminOrders = () => {
         {isSelectActive ? resActive : resAll}
       </div>
     </div>
-
   );
 };
 

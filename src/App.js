@@ -13,6 +13,7 @@ import CartPage from "./features/Cart/CartPage";
 import AdminPage from './features/Admin/AdminPage';
 import NotFoundPage from './features/NotFound/NotFoundPage';
 
+// TODO: Корзина подправить http://localhost:3000/cart
 // TODO: Перенести popUp профиль в навбар
 // TODO: Адаптив слазит в футере
 // TODO: Футер некоторые ссылки не в самом верху из-за этого не кликабельны
@@ -20,6 +21,9 @@ import NotFoundPage from './features/NotFound/NotFoundPage';
 // TODO: Картинки не должны быть кликабельны
 // TODO: Ховеры
 // TODO: Акции текст сползп
+// TODO: Новости фон
+// TODO: Съехала дата http://localhost:3000/reserv
+
 function App() {
   return (
     <>
