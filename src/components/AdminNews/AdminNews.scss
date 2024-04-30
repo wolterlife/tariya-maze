@@ -1,0 +1,171 @@
+.showCards {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .imgPlus {
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50px;
+    }
+
+    &:hover + .textAddNews {
+      visibility: visible;
+    }
+  }
+
+  .textAddNews {
+    font-family: "Candara Light", sans-serif;
+    color: white;
+    visibility: hidden;
+  }
+
+  .newsContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    width: 85vw;
+    margin-bottom: 40px;
+
+  }
+
+
+}
+
+.editContainer {
+  position: relative;
+  background-color: #131719;
+  border-bottom: 1px solid #AC9168;
+  border-top: 3px solid #AC9168;
+  width: 50vw;
+  height: 67vh;
+  margin-top: 30px;
+  margin-bottom: 70px;
+  color: white;
+  font-family: "Candara Light", sans-serif;
+  font-size: 15px;
+
+  .xIcone {
+    position: absolute;
+    width: 20px;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+
+
+  }
+
+  .title1 {
+
+    .text {
+      margin-top: 46px;
+      margin-left: 3vw;
+    }
+
+    .textName {
+      background: transparent;
+      border-bottom: 1px solid #ac9168;
+      width: 44vw;
+      height: 30px;
+      outline: none;
+      resize: none;
+      border-left: none;
+      border-top: none;
+      border-right: none;
+      color: white;
+      font-family: "Viaoda Libre", sans-serif;
+      font-size: 20px;
+      text-align: center;
+      margin: 0 3vw;
+
+
+    }
+
+    .textLimit {
+      color: #AC9168;
+      font-size: 12px;
+      margin-right: 3vw;
+      text-align: right;
+      margin-top: 0;
+    }
+
+  }
+  .title2 {
+
+    .text {
+      margin-left: 3vw;
+    }
+
+    .textName {
+      background: transparent;
+      border-bottom: 1px solid #ac9168;
+      width: 44vw;
+      height: 30px;
+      outline: none;
+      resize: none;
+      border-left: none;
+      border-top: none;
+      border-right: none;
+      color: white;
+      font-family: "Viaoda Libre", sans-serif;
+      font-size: 20px;
+      text-align: center;
+      margin: 0 3vw;
+
+    }
+
+    .textLimit {
+      color: #AC9168;
+      font-size: 12px;
+      margin-right: 3vw;
+      text-align: right;
+      margin-top: 0;
+    }
+
+  }
+
+  .descrDiscount {
+
+    .text {
+      margin-top: 32px;
+      margin-left: 3vw;
+    }
+
+    .textDescr {
+      background: #0C0F11;
+      border-bottom: 1px solid #ac9168;
+      width: 41vw;
+      height: 100px;
+      outline: none;
+      resize: none;
+      border-left: none;
+      border-top: none;
+      border-right: none;
+      color: white;
+      font-family: "Viaoda Libre", sans-serif;
+      font-size: 17px;
+      margin: 0 3vw;
+      padding: 10px 30px;
+
+    }
+
+  }
+
+  .button {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    background-color: transparent;
+    border: 1px solid #AC9168;
+    color: #AC9168;
+    padding: 5px 15px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #0C0F11;
+    }
+
+  }
+}
