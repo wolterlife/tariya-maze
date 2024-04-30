@@ -1,0 +1,90 @@
+.adminOrders {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .select {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 11px;
+
+    .textBrown {
+      font-family: Viaoda Libre, sans-serif;
+      font-size: 30px;
+      color: #AC9168;
+      font-weight: 300;
+      margin: 0;
+      cursor: pointer;
+    }
+
+    .textWhite {
+      font-family: Viaoda Libre, sans-serif;
+      font-size: 30px;
+      color: white;
+      font-weight: 300;
+      margin: 0;
+    }
+  }
+
+  .head {
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    border-top: 4px solid #ac9168;
+    width: 70vw;
+    background-color: #171C1F;
+
+    .textBrown {
+      font-family: Candara, sans-serif;
+      font-size: 20px;
+      color: #AC9168;
+      font-weight: 300;
+      padding-inline: 24px;
+    }
+
+    .xmark {
+      position: absolute;
+      width: 15px;
+      right: 15px;
+      top: 15px;
+    }
+  }
+
+  .content {
+    width: 70vw;
+    height: 55vh;
+    border-bottom: 1px solid #ac9168;
+    background-color: #171C1F;
+    margin-bottom: 54px;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      width: 10px; /* ширина scrollbar */
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #0F1315; /* цвет дорожки */
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #AC9168; /* цвет плашки */
+      border-radius: 2px; /* закругления плашки */
+    }
+
+    .line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-inline: 24px;
+
+      .textWhite {
+        font-family: Candara, sans-serif;
+        font-size: 20px;
+        color: white;
+        font-weight: 300;
+        max-width: 10vw;
+      }
+    }
+  }
+}
