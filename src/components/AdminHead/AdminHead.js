@@ -25,7 +25,7 @@ const AdminHead = () => {
         <p onClick={() => selectorFoo(1)} className={option === 1 ? 'option selected' : 'option'}>Акции</p>
         <p onClick={() => selectorFoo(2)} className={option === 2 ? 'option selected' : 'option'}>Меню</p>
         <p onClick={() => selectorFoo(3)} className={option === 3 ? 'option selected' : 'option'}>Новости</p>
-        <p onClick={() => selectorFoo(4)} className={option === 4 ? 'option selected' : 'option'}>Уведомления</p>
+        <p onClick={() => selectorFoo(4)} className={option === 4 ? 'option selected' : 'option'}>Пользователи</p>
         <p onClick={() => selectorFoo(5)} className={option === 5 ? 'option selected' : 'option'}>Брони</p>
         <p onClick={() => selectorFoo(6)} className={option === 6 ? 'option selected' : 'option'}>Заказы</p>
       </div>

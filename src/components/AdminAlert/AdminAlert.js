@@ -2,45 +2,43 @@ import React from 'react';
 import './AdminAlert.scss'
 
 const AdminAlert = () => {
+
+  const arr = [
+    {
+      id: 0,
+      name: 'Брагимец Арим',
+      number: '+375196584225',
+    },
+    {
+      id: 1,
+      name: 'Брагимецовичон Аримович',
+      number: '+375196584225',
+    },
+    {
+      id: 2,
+      name: 'Брагимец Арим',
+      number: '+375196584225',
+    },
+  ];
+
+
+  const res = arr.map((el) =>
+    <div className="line" key={el.id}>
+      <p className='textName'>{el.name}</p>
+      <p className='textWhite'>{el.number}</p>
+      <input className='imgDell' type='image' src='/img/icon-delete.svg' alt='dell' />
+    </div>
+  )
+
   return (
     <div className='adminAlert'>
+      <div className="head">
+        <p className='textBrown'>Пользователь</p>
+        <p className='textBrown'>Телефон</p>
+        <p className='textBrown'>Удалить</p>
+      </div>
       <div className="content">
-        <div className="line">
-          <p className='textWhite'>Пользователь</p>
-          <p className='textBrown'>Брагимец Арим</p>
-          <p className='textWhite'>совершил 10 заказов</p>
-          <input className='button' type='button' value={'Значение кнопки'} />
-        </div>
-        <div className="line">
-          <p className='textWhite'>Пользователь</p>
-          <p className='textBrown'>Брагимецовичон Аримович</p>
-          <p className='textWhite'>совершил очень много заказов</p>
-          <input className='button' type='button' value={'Значение длинной кнопки'} />
-        </div>
-        <div className="line">
-          <p className='textWhite'>Пользователь</p>
-          <p className='textBrown'>Брагимец Арим</p>
-          <p className='textWhite'>отмечает день рождение</p>
-          <input className='button' type='button' value={'Отправить подарок'} />
-        </div>
-        <div className="line">
-          <p className='textWhite'>Пользователь</p>
-          <p className='textBrown'>Брагимец Арим</p>
-          <p className='textWhite'>совершил 10 заказов</p>
-          <input className='button' type='button' value={'Значение кнопки'} />
-        </div>
-        <div className="line">
-          <p className='textWhite'>Пользователь</p>
-          <p className='textBrown'>Брагимецовичон Аримович</p>
-          <p className='textWhite'>совершил очень много заказов</p>
-          <input className='button' type='button' value={'Значение длинной кнопки'} />
-        </div>
-        <div className="line">
-          <p className='textWhite'>Пользователь</p>
-          <p className='textBrown'>Брагимец Арим</p>
-          <p className='textWhite'>отмечает день рождение</p>
-          <input className='button' type='button' value={'Отправить подарок'} />
-        </div>
+        {res}
       </div>
     </div>
   );
