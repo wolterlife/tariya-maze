@@ -6,9 +6,9 @@ import AdminHead from '../../components/AdminHead/AdminHead';
 const AdminPage = () => {
   return (
     <>
-     <NavBar/>
+      <NavBar/>
       <AdminHead/>
-     <Footer/>
+      <Footer/>
     </>
   );
 };
