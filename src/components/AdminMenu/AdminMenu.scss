@@ -1,0 +1,28 @@
+.adminMenu {
+  .sectionAdd {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .imgPlus {
+      cursor: pointer;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 100px;
+      }
+
+      &:hover + .textAddMenu {
+        visibility: visible;
+      }
+    }
+
+    .textAddMenu {
+      font-family: "Candara Light", sans-serif;
+      color: white;
+      visibility: hidden;
+    }
+  }
+}
+

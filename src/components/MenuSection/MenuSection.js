@@ -1,11 +1,15 @@
 import React, {useState} from 'react';
 import './MenuSection.scss'
-import {useDispatch, useSelector} from "react-redux";
-import commonSlice, {dellFromCart, pushToCart} from "../../redux/commonSlice";
+import CardMenu from '../CardMenu/CardMenu';
 
-const MenuSection = ({title, head = ['', '', ''], menuFirst = [], menuSecond = [], menuThird = []}) => {
-  const dispatch = useDispatch()
-  const {cart} = useSelector(state => state.common);
+const MenuSection = ({
+                       title,
+                       head = ['', '', ''],
+                       menuFirst = [],
+                       menuSecond = [],
+                       menuThird = [],
+                       isAdmin = false
+                     }) => {
   const [isMenuOpen, setMenuOpen] = useState(false)
   const [selectedHead, setSelectedHead] = useState(0)
 
@@ -15,71 +19,18 @@ const MenuSection = ({title, head = ['', '', ''], menuFirst = [], menuSecond = [
       <p className='textHead'>{el}</p>
     </div>)
 
+
   const resMenuFirst = menuFirst.map((el, index) =>
-    <div key={index} className={el.isDiscount ? 'card discount' : 'card'}>
-      <img src={el.imgLink} alt="img"/>
-      <div className='textBlock'>
-        <p className='name'>{el.name}</p>
-        <p className='description'>{el.description}</p>
-        <div className='low'>
-          <p className='price'>{el.price}</p>
-          <p className='val'>{el.val}</p>
-        </div>
-      </div>
-      <div className='buttons'>
-        {cart.filter(x => x.name === el.name).length > 0 &&
-          <>
-            <img onClick={() => dispatch(dellFromCart(el))} className='dell' src="/img/icon-minus.svg" alt="dell"/>
-            <p className='count'>{cart.filter(x => x.name === el.name).length}</p>
-          </>
-        }
-        <img onClick={() => dispatch(pushToCart(el))} className='add' src="/img/icon-plus.svg" alt="add"/>
-      </div>
-    </div>)
+    <CardMenu key={index} el={el} isAdmin={isAdmin}/>
+  )
 
   const resMenuSecond = menuSecond.map((el, index) =>
-    <div key={index} className={el.isDiscount ? 'card discount' : 'card'}>
-      <img src={el.imgLink} alt="img"/>
-      <div className='textBlock'>
-        <p className='name'>{el.name}</p>
-        <p className='description'>{el.description}</p>
-        <div className='low'>
-          <p className='price'>{el.price}</p>
-          <p className='val'>{el.val}</p>
-        </div>
-      </div>
-      <div className='buttons'>
-        {cart.filter(x => x.name === el.name).length > 0 &&
-          <>
-            <img onClick={() => dispatch(dellFromCart(el))} className='dell' src="/img/icon-minus.svg" alt="dell"/>
-            <p className='count'>{cart.filter(x => x.name === el.name).length}</p>
-          </>
-        }
-        <img onClick={() => dispatch(pushToCart(el))} className='add' src="/img/icon-plus.svg" alt="add"/>
-      </div>
-    </div>)
+    <CardMenu key={index} el={el} isAdmin={isAdmin}/>
+  )
 
   const resMenuThird = menuThird.map((el, index) =>
-    <div key={index} className={el.isDiscount ? 'card discount' : 'card'}>
-      <img src={el.imgLink} alt="img"/>
-      <div className='textBlock'>
-        <p className='name'>{el.name}</p>
-        <p className='description'>{el.description}</p>
-        <div className='low'>
-          <p className='price'>{el.price}</p>
-          <p className='val'>{el.val}</p>
-        </div>
-      </div>
-      <div className='buttons'>
-        {cart.filter(x => x.name === el.name).length > 0 &&
-          <>
-            <img onClick={() => dispatch(dellFromCart(el))} className='dell' src="/img/icon-minus.svg" alt="dell"/>
-            <p className='count'>{cart.filter(x => x.name === el.name).length}</p>
-          </>
-        }
-        <img onClick={() => dispatch(pushToCart(el))} className='add' src="/img/icon-plus.svg" alt="add"/>
-      </div>
-    </div>)
+    <CardMenu key={index} el={el} isAdmin={isAdmin}/>
+  )
 
   return (
     <div className='menu'>
@@ -100,7 +51,6 @@ const MenuSection = ({title, head = ['', '', ''], menuFirst = [], menuSecond = [
             </div>
             <img className='imgRevert' src="/img/menuBackground.svg" alt="background"/>
           </div>
-
         </div>
         : <img src="/img/menuLine.svg" alt="line"/>}
     </div>

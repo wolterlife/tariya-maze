@@ -8,6 +8,7 @@
   }
 }
 
+
 .menu {
   display: flex;
   justify-content: center;
@@ -91,6 +92,14 @@
           flex-wrap: wrap;
           padding: 21px 0 51px 60px;
 
+          .confirm {
+            background-color: #0C0F11;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0;
+          }
+
           .card {
             position: relative;
             display: flex;
@@ -102,6 +111,33 @@
             &:nth-child(even) {
               margin-left: 40px;
             }
+
+            .confirmText {
+              width: 100%;
+              text-align: center;
+              color: #FFFFFF;
+              font-family: Candara, sans-serif;
+              font-size: 30px;
+              font-weight: 300;
+              margin: 0 0 18px 30px;
+            }
+
+            .section {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              margin-left: -86px;
+              .confirmButton {
+                font-family: Candara, sans-serif;
+                background-color: transparent;
+                border: 1px solid #AC9168;
+                color: #AC9168;
+                padding: 8px 15px;
+                cursor: pointer;
+                margin-left: 153px;
+              }
+            }
+
 
             .textBlock {
               font-family: "Candara", sans-serif;;
@@ -142,7 +178,7 @@
 
               .count {
                 position: absolute;
-                right: 0px;
+                right: 0;
                 font-family: "Candara", sans-serif;
                 font-weight: 400;
                 font-size: 20px;
@@ -154,13 +190,21 @@
               .add {
                 position: absolute;
                 cursor: pointer;
-                left: 0px;
+                left: 0;
                 width: 25px;
 
                 &:hover {
                   background-color: rgba(255, 255, 255, 0.2);
                   border-radius: 100%;
                 }
+              }
+
+              .remove {
+                position: absolute;
+                cursor: pointer;
+                right: 5px;
+                top: 0;
+                width: 30px;
               }
 
               .dell {
