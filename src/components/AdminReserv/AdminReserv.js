@@ -32,11 +32,12 @@ const AdminReserv = () => {
   ];
 
   const resActive = arr.filter((v) => v.isActive).map((el) =>
-    <div className="line" key={el.id}>
+    <div className="lineActive" key={el.id}>
       <p className='textWhite'>{el.user}</p>
       <p className='textWhite'>{el.date}</p>
       <p className='textWhite'>{el.count}</p>
       <p className='textWhite'>{el.time}</p>
+      <img className='imgDell' src="/img/icon-delete.svg" alt="delete"/>
     </div>
   )
 

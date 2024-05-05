@@ -26,3 +26,223 @@
   }
 }
 
+.addMenu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  background: #131719;
+  border-bottom: 1px solid #AC9168;
+  border-top: 4px solid #AC9168;
+  width: 50vw;
+  height: 114vh;
+  margin-top: 30px;
+  margin-bottom: 15vh;
+
+  .imgX {
+    position: absolute;
+    width: 15px;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+  }
+
+  .title {
+    display: flex;
+    width: 30vw;
+    justify-content: space-between;
+
+    .titleText {
+      color: #AC9168;
+      font-family: "Candara Light", sans-serif;
+      font-size: 20px;
+      cursor: pointer;
+      border-bottom: 1px solid transparent;
+      margin-bottom: 10px;
+
+      &:hover {
+        border-bottom: 1px solid #AC9168;
+      }
+
+    }
+  }
+
+  .head {
+    display: flex;
+    width: 22vw;
+    justify-content: space-between;
+
+    .headText {
+      color: #AC9168;
+      font-family: "Candara Light", sans-serif;
+      font-size: 20px;
+      cursor: pointer;
+      margin-top: 10px;
+      border-bottom: 1px solid transparent;
+
+
+      &:hover {
+        border-bottom: 1px solid #AC9168;
+      }
+    }
+
+  }
+
+  .addPicture {
+    color: white;
+    font-family: "Candara Light", sans-serif;
+    font-size: 15px;
+    text-align: left;
+
+
+    .imgLink {
+      background: transparent;
+      border-bottom: 1px solid #AC9168;
+      border-top: 0;
+      border-left: 0;
+      border-right: 0;
+      color: white;
+      font-family: "Candara Light", sans-serif;
+      font-size: 15px;
+      width: 40vw;
+      outline: none;
+      resize: none;
+      padding-left: 20px;
+      height: 4vh;
+
+    }
+  }
+
+  .name {
+    color: white;
+    font-family: "Candara Light", sans-serif;
+    font-size: 15px;
+    text-align: left;
+
+    .nameText {
+      background: transparent;
+      border-bottom: 1px solid #AC9168;
+      border-top: 0;
+      border-left: 0;
+      border-right: 0;
+      color: white;
+      font-family: "Candara", sans-serif;
+      font-size: 20px;
+      width: 40vw;
+      outline: none;
+      resize: none;
+      padding-left: 20px;
+      height: 4vh;
+    }
+
+    .textLimit {
+      color: #AC9168;
+      font-size: 12px;
+      text-align: right;
+      margin-top: 0;
+    }
+  }
+
+  .description {
+    color: white;
+    font-family: "Candara Light", sans-serif;
+    font-size: 15px;
+    text-align: left;
+
+    .descriptionText {
+      background: #0C0F11;
+      border-bottom: 1px solid #AC9168;
+      border-top: 0;
+      border-left: 0;
+      border-right: 0;
+      color: white;
+      font-family: "Candara Light", sans-serif;
+      font-size: 18px;
+      width: 40vw;
+      outline: none;
+      resize: none;
+      padding-left: 20px;
+      height: 15vh;
+      padding-top: 8px;
+    }
+  }
+
+  .val {
+    color: white;
+    font-family: "Candara Light", sans-serif;
+    font-size: 15px;
+    text-align: left;
+
+    .valText {
+      background: transparent;
+      border-bottom: 1px solid #AC9168;
+      border-top: 0;
+      border-left: 0;
+      border-right: 0;
+      color: white;
+      font-family: "Candara Light", sans-serif;
+      font-size: 18px;
+      width: 40vw;
+      outline: none;
+      resize: none;
+      padding-left: 20px;
+      height: 4vh;
+    }
+
+    .textLimit {
+      color: #AC9168;
+      font-size: 12px;
+      text-align: right;
+      margin-top: 0;
+    }
+  }
+
+  .price {
+    color: white;
+    font-family: "Candara Light", sans-serif;
+    font-size: 15px;
+    text-align: left;
+
+    .priceText {
+      background: transparent;
+      border-bottom: 1px solid #AC9168;
+      border-top: 0;
+      border-left: 0;
+      border-right: 0;
+      color: white;
+      font-family: "Candara Light", sans-serif;
+      font-size: 18px;
+      width: 40vw;
+      outline: none;
+      resize: none;
+      padding-left: 20px;
+      height: 4vh;
+    }
+
+    .textLimit {
+      color: #AC9168;
+      font-size: 12px;
+      text-align: right;
+      margin-top: 0;
+    }
+  }
+
+  .button {
+    position: absolute;
+    bottom: 50px;
+    right: 4vw;
+    background: transparent;
+    border: 1px solid #AC9168;
+    color: #AC9168;
+    font-family: "Candara Light", sans-serif;
+    font-size: 15px;
+    padding: 8px 15px;
+    cursor: pointer;
+
+    &:hover {
+      background: #0C0F11;
+    }
+  }
+
+}
+
