@@ -16,7 +16,7 @@ const AdminReserv = () => {
 
   const resActive = apiReserv.filter((v) => v.isActive).map((el) =>
     <div className="lineActive" key={el.id}>
-      <p className='textWhite'>{el.user}</p>
+      <p className='textWhite'>{el.user.secondName} {el.user.firstName}</p>
       <p className='textWhite'>{el.date}</p>
       <p className='textWhite'>{el.count}</p>
       <p className='textWhite'>{el.time}</p>
