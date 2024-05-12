@@ -6,13 +6,26 @@ const AdminReserv = () => {
   const [apiReserv, setApiReserv] = useState([])
 
   useEffect(() => {
+    getReservFoo()
+  }, []);
+
+  function getReservFoo() {
     fetch("http://localhost:3000/reservations/", {method: "GET"})
       .then((response) => response.json())
       .then((data) => {
         setApiReserv(data);
       })
       .catch((error) => console.log(error));
-  }, []);
+  }
+
+  function dellReservFoo(id) {
+    fetch(`http://localhost:3000/reservations/${id}`, {method: "DELETE"})
+      .then((response) => response.json())
+      .then((data) => {
+        getReservFoo();
+      })
+      .catch((error) => console.log(error));
+  }
 
   const resActive = apiReserv.filter((v) => v.isActive).map((el) =>
     <div className="lineActive" key={el.id}>
@@ -20,7 +33,7 @@ const AdminReserv = () => {
       <p className='textWhite'>{el.date}</p>
       <p className='textWhite'>{el.count}</p>
       <p className='textWhite'>{el.time}</p>
-      <img className='imgDell' src="/img/icon-delete.svg" alt="delete"/>
+      <img onClick={() => dellReservFoo(el.id)} className='imgDell' src="/img/icon-delete.svg" alt="delete"/>
     </div>
   )
 
