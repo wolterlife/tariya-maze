@@ -1,48 +1,31 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './AdminReserv.scss'
 
 const AdminReserv = () => {
   const [isSelectActive, setSelectActive] = useState(true);
+  const [apiReserv, setApiReserv] = useState([])
 
-  const arr = [
-    {
-      id: 0,
-      count: 1,
-      date: '15 марта',
-      time: '20:00',
-      isActive: false,
-      user: 'Брагимец Арим'
-    },
-    {
-      id: 1,
-      count: 2,
-      date: '13 марта',
-      time: '20:00',
-      isActive: false,
-      user: 'Брагимец Арим'
-    },
-    {
-      id: 2,
-      count: 5,
-      date: '20 марта',
-      time: '21:00',
-      isActive: true,
-      user: 'Брагимец Арим'
-    },
-  ];
+  useEffect(() => {
+    fetch("http://localhost:3000/reservations/", {method: "GET"})
+      .then((response) => response.json())
+      .then((data) => {
+        setApiReserv(data);
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
-  const resActive = arr.filter((v) => v.isActive).map((el) =>
+  const resActive = apiReserv.filter((v) => v.isActive).map((el) =>
     <div className="line" key={el.id}>
-      <p className='textWhite'>{el.user}</p>
+      <p className='textWhite'>{el.user.secondName} {el.user.firstName}</p>
       <p className='textWhite'>{el.date}</p>
       <p className='textWhite'>{el.count}</p>
       <p className='textWhite'>{el.time}</p>
     </div>
   )
 
-  const resAll = arr.map((el) =>
+  const resAll = apiReserv.map((el) =>
     <div className="line" key={el.id}>
-      <p className='textWhite'>{el.user}</p>
+      <p className='textWhite'>{el.user.secondName} {el.user.firstName}</p>
       <p className='textWhite'>{el.date}</p>
       <p className='textWhite'>{el.count}</p>
       <p className='textWhite'>{el.time}</p>

@@ -84,8 +84,10 @@
         color: white;
         font-weight: 300;
         max-width: 10vw;
-        min-width: 100px;
+        min-width: 200px;
         text-align: center;
+        white-space: nowrap;
+        margin-left: 48px;
       }
     }
   }
