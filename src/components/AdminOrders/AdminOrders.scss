@@ -32,8 +32,9 @@
     display: flex;
     justify-content: space-evenly;
     border-top: 4px solid #ac9168;
-    width: 70vw;
+    width: 75vw;
     background-color: #171C1F;
+    padding-inline: 1vw 4vw;
 
     .textBrown {
       font-family: Candara, sans-serif;
@@ -52,7 +53,7 @@
   }
 
   .content {
-    width: 70vw;
+    width: 80vw;
     height: 55vh;
     border-bottom: 1px solid #ac9168;
     background-color: #171C1F;
@@ -72,11 +73,11 @@
       border-radius: 2px; /* закругления плашки */
     }
 
-    .line {
+    .lineActive {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-inline: 24px;
+      padding-inline: 70px 24px;
 
       .textWhite {
         font-family: Candara, sans-serif;
@@ -84,6 +85,31 @@
         color: white;
         font-weight: 300;
         max-width: 10vw;
+        min-width: 10vw;
+        text-align: center;
+      }
+
+      .imgDell {
+        width: 20px;
+        cursor: pointer;
+      }
+    }
+
+    .line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-inline: 70px;
+
+
+      .textWhite {
+        font-family: Candara, sans-serif;
+        font-size: 20px;
+        color: white;
+        font-weight: 300;
+        max-width: 10vw;
+        min-width: 10vw;
+        text-align: center;
       }
     }
   }
