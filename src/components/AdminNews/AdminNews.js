@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './AdminNews.scss'
 import CardNews from "../CardNews/CardNews";
 
@@ -8,81 +8,126 @@ const AdminNews = () => {
   const [inputTitle1, setInputTitle1] = useState('')
   const [inputTitle2, setInputTitle2] = useState('')
   const [inputDescription, setInputDescription] = useState('')
-  const arr=[
-    {
-      title1:'Новое меню',
-      title2:'Мы добавили несколько новых блюд',
-      description:'Сливочный ризотто с лоосем и шпинатом. \n Темпура из цветной капусты с апельсиновым соусом.\n Греческий салат с жареными кальмарами и лимонным соусом.'
+  const [apiNews, setApiNews] = useState([])
 
-    },
-    {
-      title1:'История успеха ',
-      title2:'Наш главный повар поделился секретами своих лучших блюд',
-      description:'Темпура из цветной капусты с апельсиновым соусом. \n Греческий салат с жареными кальмарами и лимонным соусом.'
+  useEffect(() => {
+    getNewsFoo()
+  }, []);
 
-    },
-    {
-      title1:'Эксклюзивное событие',
-      title2:'Вечер испанской кухни в нашем ресторане',
-      description:'Темпура из цветной капусты с апельсиновым соусом. \n Греческий салат с жареными кальмарами и лимонным соусом.'
+  function getNewsFoo() {
+    fetch("http://localhost:3000/news/", { method: "GET" })
+      .then((response) => response.json())
+      .then((data) => {
+        setApiNews(data);
+      })
+      .catch((error) => console.log(error));
+  }
 
-    },
-    {
-      title1:'Награды',
-      title2:'Наш ресторан отмечен престижной наградой \'Лучшее кулинарное заведение 2023\'',
-      description:'Греческий салат с жареными кальмарами и лимонным соусом.'
+  function dellNewsFoo(id) {
+    fetch(`http://localhost:3000/news/${id}`, { method: "DELETE" })
+      .then((response) => response.json())
+      .then((data) => {
+        getNewsFoo();
+      })
+      .catch((error) => console.log(error));
+  }
 
-    }
-  ]
-  const res = arr.map((el,idx)=><CardNews key={idx} el={el} setNewsFoo={setShowNews} setEditFoo={setSelectedEdit}/>)
+  function addNewsFoo() {
+    fetch(`http://localhost:3000/news/`, {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        title1: inputTitle1,
+        title2: inputTitle2,
+        description: inputDescription,
+      })
+    })
+      .then((response) => response.json())
+      .then(() => {
+        setShowNews(true)
+        getNewsFoo()
+      })
+      .catch((error) => console.log(error));
+  }
+
+  function updateNewsFoo() {
+    console.log('update')
+    fetch(`http://localhost:3000/news/${selectedEdit.id}`, {
+      method: "PUT",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        title1: inputTitle1,
+        title2: inputTitle2,
+        description: inputDescription,
+      })
+    })
+      .then((response) => response.json())
+      .then(() => {
+        setShowNews(true)
+        getNewsFoo()
+      })
+      .catch((error) => console.log(error));
+  }
+
+  const res = apiNews.map((el, idx) => <CardNews key={idx} el={el} dellFoo={dellNewsFoo} setNewsFoo={setShowNews} setEditFoo={setSelectedEdit}/>)
 
   return (
     <div>
       {showNews ?
         <div className="showCards">
-          <img onClick={()=>{setShowNews(false); setSelectedEdit({}) }} className='imgPlus' src="/img/icon-plus.svg" alt="plus"/>
+          <img onClick={() => {
+            setShowNews(false);
+            setSelectedEdit({})
+          }} className='imgPlus' src="/img/icon-plus.svg" alt="plus"/>
           <p className='textAddNews'>Добавить новость</p>
           <div className="newsContainer">
             {res}
           </div>
         </div>
-      :
-      <div className="editContainer">
-        <img onClick={() => setShowNews(true)} className='xIcone' src="/img/x-mark.svg" alt="x"/>
-        <div className="title1">
-          <p className="text">Заголовок1:</p>
-          <textarea
-            className='textName'
-            name="textName"
-            defaultValue={selectedEdit.title1}
-            onChange={(v) => setInputTitle1(v.target.value) }
-          />
-          <p className="textLimit">макс число символов: 40</p>
+        :
+        <div className="editContainer">
+          <img onClick={() => setShowNews(true)} className='xIcone' src="/img/x-mark.svg" alt="x"/>
+          <div className="title1">
+            <p className="text">Заголовок1:</p>
+            <textarea
+              className='textName'
+              name="textName"
+              defaultValue={selectedEdit.title1}
+              onChange={(v) => setInputTitle1(v.target.value)}
+            />
+            <p className="textLimit">макс число символов: 40</p>
+          </div>
+          <div className="title2">
+            <p className="text">Заголовок2:</p>
+            <textarea
+              className='textName'
+              name="textName"
+              defaultValue={selectedEdit.title2}
+              onChange={(v) => setInputTitle2(v.target.value)}
+            />
+            <p className="textLimit">макс число символов: 40</p>
+          </div>
+          <div className="descrDiscount">
+            <p className="text">Описание:</p>
+            <textarea
+              className='textDescr'
+              name="textDescr"
+              defaultValue={selectedEdit.description}
+              onChange={(v) => setInputDescription(v.target.value)}
+            />
+          </div>
+          <input onClick={() => {
+            if (Object.keys(selectedEdit).length === 0) addNewsFoo();
+            else updateNewsFoo()
+          }} className='button' type="button" value='Сохранить'/>
         </div>
-        <div className="title2">
-          <p className="text">Заголовок2:</p>
-          <textarea
-            className='textName'
-            name="textName"
-            defaultValue={selectedEdit.title2}
-            onChange={(v) => setInputTitle2(v.target.value) }
-          />
-          <p className="textLimit">макс число символов: 40</p>
-        </div>
-        <div className="descrDiscount">
-          <p className="text">Описание:</p>
-          <textarea
-            className='textDescr'
-            name="textDescr"
-            defaultValue={selectedEdit.description}
-            onChange={(v) => setInputDescription(v.target.value) }
-          />
-        </div>
-        <input className='button' type="button" value='Сохранить'/>
-      </div>
       }
-
-
     </div>
   );
 };

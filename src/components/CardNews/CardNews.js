@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './CardNews.scss'
 
-const CardNews = ({el,setEditFoo,setNewsFoo}) => {
+const CardNews = ({el,setEditFoo,setNewsFoo,dellFoo}) => {
   const [deleteCard, setDeleteCard] = useState(false);
   return (
     <>
@@ -9,7 +9,10 @@ const CardNews = ({el,setEditFoo,setNewsFoo}) => {
         <div className="deleteCard">
           <p>Удалить запись?</p>
           <input onClick={() => setDeleteCard(false)} className='button' type="button" value='Нет'/>
-          <input onClick={() => setDeleteCard(false)} className='button' type="button" value='Да'/>
+          <input onClick={() => {
+            dellFoo(el.id)
+            setDeleteCard(false)
+          }} className='button' type="button" value='Да'/>
         </div>
         :
     <div className='cardNews'>
