@@ -1,32 +1,36 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './AdminAlert.scss'
 
 const AdminAlert = () => {
+  const [apiUsers, setApiUsers] = useState([])
 
-  const arr = [
-    {
-      id: 0,
-      name: 'Брагимец Арим',
-      number: '+375196584225',
-    },
-    {
-      id: 1,
-      name: 'Брагимецовичон Аримович',
-      number: '+375196584225',
-    },
-    {
-      id: 2,
-      name: 'Брагимец Арим',
-      number: '+375196584225',
-    },
-  ];
+  useEffect(() => {
+    getUsersFoo()
+  }, []);
 
+  function getUsersFoo() {
+    fetch("http://localhost:3000/users/", {method: "GET"})
+      .then((response) => response.json())
+      .then((data) => {
+        setApiUsers(data);
+      })
+      .catch((error) => console.log(error));
+  }
 
-  const res = arr.map((el) =>
+  function dellUserFoo(id) {
+    fetch(`http://localhost:3000/users/${id}`, {method: "DELETE"})
+      .then((response) => response.json())
+      .then((data) => {
+        getUsersFoo();
+      })
+      .catch((error) => console.log(error));
+  }
+
+  const res = apiUsers.map((el) =>
     <div className="line" key={el.id}>
-      <p className='textName'>{el.name}</p>
-      <p className='textWhite'>{el.number}</p>
-      <input className='imgDell' type='image' src='/img/icon-delete.svg' alt='dell' />
+      <p className='textName'>{el.secondName} {el.firstName}</p>
+      <p className='textWhite'>{el.phone}</p>
+      <input onClick={() => dellUserFoo(el.id)} className='imgDell' type='image' src='/img/icon-delete.svg' alt='dell' />
     </div>
   )
 
