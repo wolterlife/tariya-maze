@@ -14,6 +14,13 @@ const AdminNews = () => {
     getNewsFoo()
   }, []);
 
+  useEffect(() => {
+    setInputTitle1(selectedEdit.title1)
+    setInputTitle2(selectedEdit.title2)
+    setInputDescription(selectedEdit.description)
+  }, [selectedEdit]);
+
+
   function getNewsFoo() {
     fetch("http://localhost:3000/news/", { method: "GET" })
       .then((response) => response.json())
@@ -54,7 +61,6 @@ const AdminNews = () => {
   }
 
   function updateNewsFoo() {
-    console.log('update')
     fetch(`http://localhost:3000/news/${selectedEdit.id}`, {
       method: "PUT",
       headers: {
@@ -83,7 +89,7 @@ const AdminNews = () => {
         <div className="showCards">
           <img onClick={() => {
             setShowNews(false);
-            setSelectedEdit({})
+            setSelectedEdit({});
           }} className='imgPlus' src="/img/icon-plus.svg" alt="plus"/>
           <p className='textAddNews'>Добавить новость</p>
           <div className="newsContainer">
@@ -123,8 +129,11 @@ const AdminNews = () => {
             />
           </div>
           <input onClick={() => {
-            if (Object.keys(selectedEdit).length === 0) addNewsFoo();
-            else updateNewsFoo()
+            if (inputTitle1 && inputTitle2 && inputDescription) {
+              if (Object.keys(selectedEdit).length === 0) addNewsFoo();
+              else updateNewsFoo()
+              setSelectedEdit({})
+            }
           }} className='button' type="button" value='Сохранить'/>
         </div>
       }
