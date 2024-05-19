@@ -29,7 +29,9 @@ const AdminDiscount = () => {
   }
 
   function dellDiscountFoo(id) {
-    fetch(`http://localhost:3000/discounts/${id}`, { method: "DELETE" })
+    fetch(`http://localhost:3000/discounts/${id}`, { method: "DELETE", headers: {
+        'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+      } })
       .then((response) => response.json())
       .then((data) => {
         getDiscountsFoo();
@@ -42,7 +44,8 @@ const AdminDiscount = () => {
       method: "POST",
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('authToken')}`
       },
       body: JSON.stringify({
         name: inputName,
@@ -63,7 +66,8 @@ const AdminDiscount = () => {
       method: "PUT",
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('authToken')}`
       },
       body: JSON.stringify({
         name: inputName,

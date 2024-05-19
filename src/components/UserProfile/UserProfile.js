@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './UserProfile.scss'
 import {useNavigate} from 'react-router-dom';
 
@@ -9,7 +9,7 @@ const UserProfile = ({ orders = [], reservations = [] }) => {
   const [visibleReview, setVisibleReview] = useState(false); //todo: change to false
   const [starStatus, setStarStatus] = useState(0)
 
-  const resOrders = orders.map((el) =>
+  const resOrders = orders?.map((el) =>
     <div key={el.id} className="card">
       {el.isActive && <p className='textActive'>Сейчас активен</p>}
       <div className="part">
@@ -27,12 +27,12 @@ const UserProfile = ({ orders = [], reservations = [] }) => {
     </div>
   )
 
-  const resReserv = reservations.map((el) =>
+  const resReserv = reservations?.map((el) =>
     <div key={el.id} className="card">
       {el.isActive && <p className='textActive'>Сейчас активен</p>}
       <div className="part">
         <p className='head'>Дата</p>
-        <p className='text'>{el.date}</p>
+        <p className='text'>{el.date.split('-').reverse().join('.')}</p>
       </div>
       <div className="part">
         <p className='head'>к-во человек</p>
@@ -50,28 +50,30 @@ const UserProfile = ({ orders = [], reservations = [] }) => {
       <div className='userProfile'>
         <img className='lines' src="/img/profile-user-lines.svg" alt="lines"/>
         <div className='containerInfo'>
-          <p className='text'>Брагимец</p>
-          <p className='text'>Арим</p>
-          <p className='text'>Констатинович</p>
+          <p className='text'>{localStorage.getItem('userSecondName')}</p>
+          <p className='text'>{localStorage.getItem('userFirstName')}</p>
+          <p className='text'>{localStorage.getItem('userPatron')}</p>
         </div>
         <div className="user">
-          <p className='text'>+375196584225</p>
-          <p className='text'>arimbra@gmail.com</p>
-          <p className='text'>21.11.1989</p>
-          <p className='text'>г. Гродно ул. Высокая д. 6</p>
+          <p className='text'>{localStorage.getItem('userPhone')}</p>
+          <p className='text'>{localStorage.getItem('userMail')}</p>
+          <p className='text'>{localStorage.getItem('userDOB').split('-').reverse().join('.')}</p>
+          <p className='text'>{localStorage.getItem('userDestination')}</p>
           {!isHistoryVisible &&
             <input onClick={() => setHistoryVisible(true)} className='button' type='button' value='История заказов'/>
           }
         </div>
         <div className="right">
           <div className="countOrders">
-            <p className='textCount'>10</p>
+            <p className='textCount'>{orders.length}</p>
             <p className='textOrders'>Заказов</p>
           </div>
-          <div className="alert">
-            <p className='text'>Вы можете зарегистрировать <br/> карту постоянного клиента</p>
-            <img className='img' src="/img/right-alert.svg" alt="right"/>
-          </div>
+          {orders.length >= 10 &&
+            <div className="alert">
+              <p className='text'>Вы можете зарегистрировать <br/> карту постоянного клиента</p>
+              <img className='img' src="/img/right-alert.svg" alt="right"/>
+            </div>
+          }
           <input onClick={() => {
             setHistoryVisible(false)
             navigate('/settings')

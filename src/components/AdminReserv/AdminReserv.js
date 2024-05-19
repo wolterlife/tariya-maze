@@ -10,7 +10,9 @@ const AdminReserv = () => {
   }, []);
 
   function getReservFoo() {
-    fetch("http://localhost:3000/reservations/", {method: "GET"})
+    fetch("http://localhost:3000/reservations/", {method: "GET", headers: {
+        'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+      }})
       .then((response) => response.json())
       .then((data) => {
         setApiReserv(data);
@@ -19,7 +21,9 @@ const AdminReserv = () => {
   }
 
   function dellReservFoo(id) {
-    fetch(`http://localhost:3000/reservations/${id}`, {method: "DELETE"})
+    fetch(`http://localhost:3000/reservations/${id}`, {method: "DELETE", headers: {
+        'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+      }})
       .then((response) => response.json())
       .then((data) => {
         getReservFoo();
@@ -27,20 +31,20 @@ const AdminReserv = () => {
       .catch((error) => console.log(error));
   }
 
-  const resActive = apiReserv.filter((v) => v.isActive).map((el) =>
+  const resActive = apiReserv?.filter((v) => v.isActive)?.map((el) =>
     <div className="lineActive" key={el.id}>
       <p className='textWhite'>{el.user.secondName} {el.user.firstName}</p>
-      <p className='textWhite'>{el.date}</p>
+      <p className='textWhite'>{el.date.split('-').reverse().join('.')}</p>
       <p className='textWhite'>{el.count}</p>
       <p className='textWhite'>{el.time}</p>
       <img onClick={() => dellReservFoo(el.id)} className='imgDell' src="/img/icon-delete.svg" alt="delete"/>
     </div>
   )
 
-  const resAll = apiReserv.map((el) =>
+  const resAll = apiReserv?.map((el) =>
     <div className="line" key={el.id}>
       <p className='textWhite'>{el.user.secondName} {el.user.firstName}</p>
-      <p className='textWhite'>{el.date}</p>
+      <p className='textWhite'>{el.date.split('-').reverse().join('.')}</p>
       <p className='textWhite'>{el.count}</p>
       <p className='textWhite'>{el.time}</p>
     </div>

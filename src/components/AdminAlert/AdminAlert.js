@@ -9,7 +9,9 @@ const AdminAlert = () => {
   }, []);
 
   function getUsersFoo() {
-    fetch("http://localhost:3000/users/", {method: "GET"})
+    fetch("http://localhost:3000/users/", {method: "GET", headers: {
+        'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+      }})
       .then((response) => response.json())
       .then((data) => {
         setApiUsers(data);
@@ -18,7 +20,9 @@ const AdminAlert = () => {
   }
 
   function dellUserFoo(id) {
-    fetch(`http://localhost:3000/users/${id}`, {method: "DELETE"})
+    fetch(`http://localhost:3000/users/${id}`, {method: "DELETE", headers: {
+        'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+      }})
       .then((response) => response.json())
       .then((data) => {
         getUsersFoo();
@@ -26,7 +30,7 @@ const AdminAlert = () => {
       .catch((error) => console.log(error));
   }
 
-  const res = apiUsers.map((el) =>
+  const res = apiUsers?.map((el) =>
     <div className="line" key={el.id}>
       <p className='textName'>{el.secondName} {el.firstName}</p>
       <p className='textWhite'>{el.phone}</p>

@@ -31,7 +31,10 @@ const AdminNews = () => {
   }
 
   function dellNewsFoo(id) {
-    fetch(`http://localhost:3000/news/${id}`, { method: "DELETE" })
+    fetch(`http://localhost:3000/news/${id}`, { method: "DELETE", headers: {
+        'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+      }
+    })
       .then((response) => response.json())
       .then((data) => {
         getNewsFoo();
@@ -44,7 +47,8 @@ const AdminNews = () => {
       method: "POST",
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('authToken')}`
       },
       body: JSON.stringify({
         title1: inputTitle1,
@@ -65,7 +69,8 @@ const AdminNews = () => {
       method: "PUT",
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('authToken')}`
       },
       body: JSON.stringify({
         title1: inputTitle1,

@@ -22,7 +22,6 @@ import NotFoundPage from './features/NotFound/NotFoundPage';
 // TODO: Ховеры
 // TODO: Акции текст сползп
 // TODO: Новости фон
-// TODO: Съехала дата http://localhost:3000/reserv
 
 function App() {
   return (

@@ -19,7 +19,7 @@ const AdminHead = () => {
     <div className='adminHead'>
       <img src="/img/admin-background.svg" alt="background"/>
       <div className="darkContainer">
-        <p className='text'>Сиренко Назария</p>
+        <p className='text'>{localStorage.getItem('userSecondName')} {localStorage.getItem('userFirstName')}</p>
       </div>
       <div className="navMenu">
         <p onClick={() => selectorFoo(1)} className={option === 1 ? 'option selected' : 'option'}>Акции</p>

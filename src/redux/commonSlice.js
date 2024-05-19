@@ -4,7 +4,6 @@ const commonSlice = createSlice({
   name: "common",
   initialState: {
     isPopUpProfileVisible: false,
-    isAuth: false,
     cart: [{}],
   },
   reducers: {
@@ -17,7 +16,7 @@ const commonSlice = createSlice({
     dellFromCart(state, action) {
       let idx = state.cart.findIndex(x => x.name === action.payload.name)
       state.cart.splice(idx, 1);
-    }
+    },
   }
 })
 
