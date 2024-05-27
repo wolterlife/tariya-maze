@@ -47,6 +47,10 @@
         border: 1px solid #ffffff;
         background: #131719;
 
+        &:first-child {
+          margin-left: 400px;
+        }
+
         .top {
           display: flex;
           justify-content: space-between;

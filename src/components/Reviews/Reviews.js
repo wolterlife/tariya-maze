@@ -6,14 +6,20 @@ const Reviews = () => {
   const cardsRef = useRef(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
+  const [reviews, setReviews] = useState([])
+
 
   const checkForScrollPosition = () => {
     const {current} = cardsRef;
-    if (current) {
-      const {scrollLeft, scrollWidth, clientWidth} = current;
-      setCanScrollLeft(scrollLeft > 0);
-      setCanScrollRight(scrollLeft !== scrollWidth - clientWidth);
-    }
+    setTimeout(() => {
+      if (current) {
+        const {scrollLeft, scrollWidth, clientWidth} = current;
+        console.log(scrollLeft, scrollWidth - clientWidth)
+        setCanScrollLeft(scrollLeft > 0);
+        setCanScrollRight(Math.abs (scrollLeft - (scrollWidth - clientWidth)) > 1);
+        console.log(scrollLeft, '- (',scrollWidth-clientWidth,') =',  (scrollLeft - (scrollWidth - clientWidth)))
+      }
+    }, 400)
   };
 
   const debounceCheckForScrollPosition = debounce(checkForScrollPosition, 200);
@@ -21,7 +27,16 @@ const Reviews = () => {
   const scrollContainerBy = (distance) =>
     cardsRef.current?.scrollBy({left: distance, behavior: "smooth"});
 
+
+
   useEffect(() => {
+    fetch("http://localhost:3000/reviews/", {method: "GET"})
+      .then((response) => response.json())
+      .then((data) => {
+        setReviews(data);
+      })
+      .catch((error) => console.log(error));
+
     const {current} = cardsRef;
     checkForScrollPosition();
     current?.addEventListener("scroll", debounceCheckForScrollPosition);
@@ -32,191 +47,47 @@ const Reviews = () => {
     };
   }, []);
 
+
+
+  const res = reviews.map(el =>
+    <div key={el.id} className="card">
+      <div className="top">
+        <p className='name'>
+          {el.user}:
+        </p>
+        <div className='stars'>
+          {el.stars >= 1 ?
+            <img className='star' src="/img/star-true.svg" alt="star"/> :
+            <img className='star' src="/img/star-false.svg" alt="star"/>
+          }
+          {el.stars >= 2 ?
+            <img className='star' src="/img/star-true.svg" alt="star"/> :
+            <img className='star' src="/img/star-false.svg" alt="star"/>
+          }
+          {el.stars >= 3 ?
+            <img className='star' src="/img/star-true.svg" alt="star"/> :
+            <img className='star' src="/img/star-false.svg" alt="star"/>
+          }
+          {el.stars >= 4 ?
+            <img className='star' src="/img/star-true.svg" alt="star"/> :
+            <img className='star' src="/img/star-false.svg" alt="star"/>
+          }
+          {el.stars >= 5 ?
+            <img className='star' src="/img/star-true.svg" alt="star"/> :
+            <img className='star' src="/img/star-false.svg" alt="star"/>
+          }
+        </div>
+      </div>
+      <p className='text'>{el.text}</p>
+    </div>
+  )
+
   return (
     <div className="reviews">
       <input onClick={() => scrollContainerBy(-400)} type='image' className={canScrollLeft ? 'button' : 'hidden'} src="/img/left-arrow.svg" alt="left"/>
       <div ref={cardsRef} className='containerReviews'>
         <div className="cards">
-          <div className="card">
-            <div className="top">
-              <p className='name'>
-                Алиса:
-              </p>
-              <div className='stars'>
-                <img className='star' src="/img/star-true.svg" alt="star"/>
-                <img className='star' src="/img/star-true.svg" alt="star"/>
-                <img className='star' src="/img/star-true.svg" alt="star"/>
-                <img className='star' src="/img/star-true.svg" alt="star"/>
-                <img className='star' src="/img/star-false.svg" alt="star"/>
-              </div>
-            </div>
-            <p className='text'>Были в этом ресторане на день рождения и просто восторг! Атмосфера, обслуживание ...</p>
-          </div>
-          <div className="card">
-            <div className="top">
-              <p className='name'>
-                Алиса:
-              </p>
-              <div className='stars'>
-                <img className='star' src="/img/star-true.svg" alt="star"/>
-                <img className='star' src="/img/star-true.svg" alt="star"/>
-                <img className='star' src="/img/star-true.svg" alt="star"/>
-                <img className='star' src="/img/star-true.svg" alt="star"/>
-                <img className='star' src="/img/star-false.svg" alt="star"/>
-              </div>
-            </div>
-            <p className='text'>Были в этом ресторане на день рождения и просто восторг! Атмосфера, обслуживание ...</p>
-          </div>
-          <div className="card">
-            <div className="top">
-              <p className='name'>
-                Алиса:
-              </p>
-              <div className='stars'>
-                <img className='star' src="/img/star-true.svg" alt="star"/>
-                <img className='star' src="/img/star-true.svg" alt="star"/>
-                <img className='star' src="/img/star-true.svg" alt="star"/>
-                <img className='star' src="/img/star-true.svg" alt="star"/>
-                <img className='star' src="/img/star-false.svg" alt="star"/>
-              </div>
-            </div>
-            <p className='text'>Были в этом ресторане на день рождения и просто восторг! Атмосфера, обслуживание ...</p>
-          </div>
-          <div className="card">
-            <div className="top">
-              <p className='name'>
-                Алиса:
-              </p>
-              <div className='stars'>
-                <img className='star' src="/img/star-true.svg" alt="star"/>
-                <img className='star' src="/img/star-true.svg" alt="star"/>
-                <img className='star' src="/img/star-true.svg" alt="star"/>
-                <img className='star' src="/img/star-true.svg" alt="star"/>
-                <img className='star' src="/img/star-false.svg" alt="star"/>
-              </div>
-            </div>
-            <p className='text'>Были в этом ресторане на день рождения и просто восторг! Атмосфера, обслуживание ...</p>
-          </div>
-          <div className="card">
-            <div className="top">
-              <p className='name'>
-                Алиса:
-              </p>
-              <div className='stars'>
-                <img className='star' src="/img/star-true.svg" alt="star"/>
-                <img className='star' src="/img/star-true.svg" alt="star"/>
-                <img className='star' src="/img/star-true.svg" alt="star"/>
-                <img className='star' src="/img/star-true.svg" alt="star"/>
-                <img className='star' src="/img/star-false.svg" alt="star"/>
-              </div>
-            </div>
-            <p className='text'>Были в этом ресторане на день рождения и просто восторг! Атмосфера, обслуживание ...</p>
-          </div>
-          <div className="card">
-            <div className="top">
-              <p className='name'>
-                Алиса:
-              </p>
-              <div className='stars'>
-                <img className='star' src="/img/star-true.svg" alt="star"/>
-                <img className='star' src="/img/star-true.svg" alt="star"/>
-                <img className='star' src="/img/star-true.svg" alt="star"/>
-                <img className='star' src="/img/star-true.svg" alt="star"/>
-                <img className='star' src="/img/star-false.svg" alt="star"/>
-              </div>
-            </div>
-            <p className='text'>Были в этом ресторане на день рождения и просто восторг! Атмосфера, обслуживание ...</p>
-          </div>
-          <div className="card">
-            <div className="top">
-              <p className='name'>
-                Алиса:
-              </p>
-              <div className='stars'>
-                <img className='star' src="/img/star-true.svg" alt="star"/>
-                <img className='star' src="/img/star-true.svg" alt="star"/>
-                <img className='star' src="/img/star-true.svg" alt="star"/>
-                <img className='star' src="/img/star-true.svg" alt="star"/>
-                <img className='star' src="/img/star-false.svg" alt="star"/>
-              </div>
-            </div>
-            <p className='text'>Были в этом ресторане на день рождения и просто восторг! Атмосфера, обслуживание ...</p>
-          </div>
-          <div className="card">
-            <div className="top">
-              <p className='name'>
-                Алиса:
-              </p>
-              <div className='stars'>
-                <img className='star' src="/img/star-true.svg" alt="star"/>
-                <img className='star' src="/img/star-true.svg" alt="star"/>
-                <img className='star' src="/img/star-true.svg" alt="star"/>
-                <img className='star' src="/img/star-true.svg" alt="star"/>
-                <img className='star' src="/img/star-false.svg" alt="star"/>
-              </div>
-            </div>
-            <p className='text'>Были в этом ресторане на день рождения и просто восторг! Атмосфера, обслуживание ...</p>
-          </div>
-          <div className="card">
-            <div className="top">
-              <p className='name'>
-                Алиса:
-              </p>
-              <div className='stars'>
-                <img className='star' src="/img/star-true.svg" alt="star"/>
-                <img className='star' src="/img/star-true.svg" alt="star"/>
-                <img className='star' src="/img/star-true.svg" alt="star"/>
-                <img className='star' src="/img/star-true.svg" alt="star"/>
-                <img className='star' src="/img/star-false.svg" alt="star"/>
-              </div>
-            </div>
-            <p className='text'>Были в этом ресторане на день рождения и просто восторг! Атмосфера, обслуживание ...</p>
-          </div>
-          <div className="card">
-            <div className="top">
-              <p className='name'>
-                Алиса:
-              </p>
-              <div className='stars'>
-                <img className='star' src="/img/star-true.svg" alt="star"/>
-                <img className='star' src="/img/star-true.svg" alt="star"/>
-                <img className='star' src="/img/star-true.svg" alt="star"/>
-                <img className='star' src="/img/star-true.svg" alt="star"/>
-                <img className='star' src="/img/star-false.svg" alt="star"/>
-              </div>
-            </div>
-            <p className='text'>Были в этом ресторане на день рождения и просто восторг! Атмосфера, обслуживание ...</p>
-          </div>
-          <div className="card">
-            <div className="top">
-              <p className='name'>
-                Алиса:
-              </p>
-              <div className='stars'>
-                <img className='star' src="/img/star-true.svg" alt="star"/>
-                <img className='star' src="/img/star-true.svg" alt="star"/>
-                <img className='star' src="/img/star-true.svg" alt="star"/>
-                <img className='star' src="/img/star-true.svg" alt="star"/>
-                <img className='star' src="/img/star-false.svg" alt="star"/>
-              </div>
-            </div>
-            <p className='text'>Были в этом ресторане на день рождения и просто восторг! Атмосфера, обслуживание ...</p>
-          </div>
-          <div className="card">
-            <div className="top">
-              <p className='name'>
-                Алиса:
-              </p>
-              <div className='stars'>
-                <img className='star' src="/img/star-true.svg" alt="star"/>
-                <img className='star' src="/img/star-true.svg" alt="star"/>
-                <img className='star' src="/img/star-true.svg" alt="star"/>
-                <img className='star' src="/img/star-true.svg" alt="star"/>
-                <img className='star' src="/img/star-false.svg" alt="star"/>
-              </div>
-            </div>
-            <p className='text'>Были в этом ресторане на день рождения и просто восторг! Атмосфера, обслуживание ...</p>
-          </div>
+          {res}
         </div>
 
       </div>

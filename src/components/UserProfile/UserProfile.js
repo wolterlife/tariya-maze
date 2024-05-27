@@ -1,13 +1,40 @@
 import React, {useEffect, useState} from 'react';
 import './UserProfile.scss'
 import {useNavigate} from 'react-router-dom';
+import {setPopUpProfileVisible} from '../../redux/commonSlice';
 
 const UserProfile = ({ orders = [], reservations = [] }) => {
   const navigate = useNavigate()
   const [isShowOrders, setShowOrders] = useState(true);
   const [isHistoryVisible, setHistoryVisible] = useState(false)
-  const [visibleReview, setVisibleReview] = useState(false); //todo: change to false
+  const [visibleReview, setVisibleReview] = useState(false);
+  const [valueReview, setValueReview] = useState('')
   const [starStatus, setStarStatus] = useState(0)
+
+  function sendReview() {
+    if (starStatus && valueReview) {
+    fetch(`http://localhost:3000/reviews/`, {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+      },
+      body: JSON.stringify({
+        stars: starStatus,
+        text: valueReview,
+        user: localStorage.getItem('userFirstName')
+      })
+    })
+      .then((response) => response.json())
+      .then((res) => {
+        setVisibleReview(false);
+        setStarStatus(0)
+        setValueReview('')
+      })
+      .catch((error) => console.log(error));
+    }
+  }
 
   const resOrders = orders?.map((el) =>
     <div key={el.id} className="card">
@@ -101,7 +128,7 @@ const UserProfile = ({ orders = [], reservations = [] }) => {
           <div className="review">
             <input onClick={() => setVisibleReview(false)} className='xmark' type="image" src='/img/x-mark.svg' alt='x'/>
             <div className="top">
-              <p className='name'>Name:</p>
+              <p className='name'>{localStorage.getItem('userFirstName')}:</p>
               <div className="stars">
                 <img onClick={() => setStarStatus(1)} className='star' src={(starStatus >= 1) ? '/img/star-true.svg' : '/img/star-false.svg' } alt="1"/>
                 <img onClick={() => setStarStatus(2)} className='star' src={(starStatus >= 2) ? '/img/star-true.svg' : '/img/star-false.svg' } alt="2"/>
@@ -110,8 +137,8 @@ const UserProfile = ({ orders = [], reservations = [] }) => {
                 <img onClick={() => setStarStatus(5)} className='star' src={(starStatus >= 5) ? '/img/star-true.svg' : '/img/star-false.svg' } alt="5"/>
               </div>
             </div>
-            <textarea className='input' name="comment" />
-            <input type='button' className='buttonSend' value='Отправить' />
+            <textarea onChange={(e) => setValueReview(e.target.value)} className='input' name="comment" />
+            <input onClick={() => sendReview()} type='button' className='buttonSend' value='Отправить' />
           </div>
         </div>
       }
