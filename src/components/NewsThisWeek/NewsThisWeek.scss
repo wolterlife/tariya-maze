@@ -20,17 +20,21 @@
     .imgLeft {
       position: absolute;
       left: 15vw;
+      z-index: 0;
     }
 
     .imgRight {
       position: absolute;
       right: 15vw;
+      z-index: 0;
     }
 
     .topLine {
       display: flex;
 
       .card {
+        z-index: 2;
+
         &:first-child {
           margin: 40px 0 0 25px;
         }
@@ -78,6 +82,7 @@
         display: flex;
 
         .card {
+          z-index: 2;
           &:first-child {
             margin: 0px 0 0 83px;
           }

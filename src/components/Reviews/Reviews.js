@@ -88,6 +88,7 @@ const Reviews = () => {
       <div ref={cardsRef} className='containerReviews'>
         <div className="cards">
           {res}
+          {res}
         </div>
 
       </div>

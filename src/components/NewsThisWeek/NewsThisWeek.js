@@ -1,7 +1,48 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './NewsThisWeek.scss'
 
 const NewsThisWeek = () => {
+  const [apiNews, setApiNews] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/news/", { method: "GET" })
+      .then((response) => response.json())
+      .then((data) => {
+        const shuffled = data.sort(() => 0.5 - Math.random());
+        setApiNews(shuffled.slice(0, 4));
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
+  const resBottom = apiNews.slice(0, 2).map((el) =>
+    <div className="card" key={el.id}>
+      <p className='textTopCard'>{el.title1}</p>
+      <div className="content">
+        <p className='textMain'>{el.title2}</p>
+        <div className="lowerSection">
+          {el.description.split('. ').map((el) =>
+            <p key={el} className='textPrimary'>{el}</p>)
+          }
+        </div>
+      </div>
+    </div>
+  )
+
+  const resTop = apiNews.slice(2, 4).map((el) =>
+    <div className="card" key={el.id}>
+      <p className='textTopCard'>{el.title1}</p>
+      <div className="content">
+        <p className='textMain'>{el.title2}</p>
+        <div className="lowerSection">
+          {el.description.split('. ').map((el) =>
+            <p key={el} className='textPrimary'>{el}</p>)
+          }
+        </div>
+      </div>
+    </div>
+  )
+
+
   return (
     <div className='newsWeek'>
       <p className='textLarge'>Текущая неделя</p>
@@ -9,52 +50,13 @@ const NewsThisWeek = () => {
         <img className='imgLeft' src="/img/news-left.svg" alt="image"/>
         <img className='imgRight' src="/img/news-right.svg" alt="image"/>
         <div className="topLine">
-          <div className="card">
-            <p className='textTopCard'>Новое меню</p>
-            <div className="content">
-              <p className='textMain'>Мы добавили несколько новых блюд</p>
-              <div className="lowerSection">
-                <p className='textPrimary'>(Сливочный ризотто с лососем и шпинатом)</p>
-                <p className='textPrimary'>(Сливочный ризотто с лососем и шпинатом)</p>
-                <p className='textPrimary'>(Сливочный ризотто с лососем и шпинатом)</p>
-              </div>
-            </div>
-          </div>
-          <div className="card">
-            <p className='textTopCard'>История успеха </p>
-            <div className="content">
-              <p className='textMain'>Наш главный повар поделился секретами своих лучших блюд</p>
-              <div className="lowerSection">
-                <p className='textPrimary'>(Темпура из цветной капусты с апельсиновым соусом)</p>
-                <p className='textPrimary'>(Греческий салат с жареными кальмарами и лимонным соусом)</p>
-              </div>
-            </div>
-          </div>
+          {resTop}
         </div>
         <div className="wrapperBottom">
           <div className="bottomLine">
-            <div className="card">
-              <p className='textTopCard'>Эксклюзивное событие</p>
-              <div className="content">
-                <p className='textMain'>Вечер испанской кухни в нашем ресторане</p>
-                <div className="lowerSection">
-                  <p className='textPrimary'>(Темпура из цветной капусты с апельсиновым соусом)</p>
-                  <p className='textPrimary'>(Греческий салат с жареными кальмарами и лимонным соусом)</p>
-                </div>
-              </div>
-            </div>
-            <div className="card">
-              <p className='textTopCard'>Награды</p>
-              <div className="content">
-                <p className='textMain'>Наш ресторан отмечен престижной наградой 'Лучшее кулинарное заведение 2023'</p>
-                <div className="lowerSection">
-                  <p className='textPrimary'>(Греческий салат с жареными кальмарами и лимонным соусом)</p>
-                </div>
-              </div>
-            </div>
+            {resBottom}
           </div>
         </div>
-
       </div>
     </div>
   );
