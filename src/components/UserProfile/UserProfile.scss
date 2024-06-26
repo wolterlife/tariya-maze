@@ -48,6 +48,10 @@
       background-color: #1F262A;
       cursor: pointer;
       margin-top: 24px;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.2);
+      }
     }
   }
 
@@ -108,8 +112,30 @@
       }
     }
 
-    .settings {
-      margin-top: 23px;
+    .btnCont {
+      display: flex;
+      justify-content: space-between;
+      width: 120px;
+
+      .exit {
+        width: fit-content;
+        border: 1px solid #ac9168;
+        padding: 6px 15px;
+        background-color: transparent;
+        color: #AC9168;
+        font-family: "Candara", sans-serif;
+        font-weight: 300;
+        cursor: pointer;
+        margin-top: 24px;
+
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.2);
+        }
+      }
+
+      .settings {
+        margin-top: 23px;
+      }
     }
   }
 }
@@ -211,7 +237,6 @@
         border-bottom: 1px solid #1F262A;
 
         .textActive {
-          // todo: left -60px; or now
           left: -50px;
           height: 20px;
           color: #AC9168;
@@ -265,7 +290,6 @@
           }
 
           .textActive {
-            // todo: left -60px; or now
             top: 30px;
           }
         }
@@ -298,7 +322,6 @@
   backdrop-filter: blur(4px);
   background: rgba(0, 0, 0, 0.6);
   top: 0;
-
 
 
   .review {
@@ -357,7 +380,7 @@
 
     .buttonSend {
       width: fit-content;
-      border: 1px solid  #ac9168;
+      border: 1px solid #ac9168;
       padding: 8px 15px;
       background-color: transparent;
       color: #AC9168;

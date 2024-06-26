@@ -9,6 +9,20 @@ const AdminReserv = () => {
     getReservFoo()
   }, []);
 
+  function chk(t) {
+    if (t.length < 5) return '0' + t
+    return t;
+  }
+
+  function chkReserv(el) {
+    let data = new Date(el.date)
+    data.setHours(el.time.split(':')[0])
+    data.setMinutes(el.time.split(':')[1])
+    let now = new Date()
+    return (chk(+now) < chk(+data));
+  }
+
+
   function getReservFoo() {
     fetch("http://localhost:3000/reservations/", {method: "GET", headers: {
         'Authorization': `Bearer ${localStorage.getItem('authToken')}`
@@ -25,13 +39,13 @@ const AdminReserv = () => {
         'Authorization': `Bearer ${localStorage.getItem('authToken')}`
       }})
       .then((response) => response.json())
-      .then((data) => {
+      .then(() => {
         getReservFoo();
       })
       .catch((error) => console.log(error));
   }
 
-  const resActive = apiReserv?.filter((v) => v.isActive)?.map((el) =>
+  const resActive = apiReserv?.filter((v) => chkReserv(v))?.map((el) =>
     <div className="lineActive" key={el.id}>
       <p className='textWhite'>{el.user.secondName} {el.user.firstName}</p>
       <p className='textWhite'>{el.date.split('-').reverse().join('.')}</p>

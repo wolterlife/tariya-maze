@@ -63,7 +63,10 @@
       &:hover {
         border-bottom: 1px solid #AC9168;
       }
+    }
 
+    .selected {
+      color: #FFFFFF;
     }
   }
 
@@ -86,6 +89,9 @@
       }
     }
 
+    .selectAdd {
+      color: #FFFFFF;
+    }
   }
 
   .addPicture {

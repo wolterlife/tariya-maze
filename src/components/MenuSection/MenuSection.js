@@ -8,6 +8,7 @@ const MenuSection = ({
                        menuFirst = [],
                        menuSecond = [],
                        menuThird = [],
+                       getMenu,
                        isAdmin = false
                      }) => {
   const [isMenuOpen, setMenuOpen] = useState(false)
@@ -21,19 +22,19 @@ const MenuSection = ({
 
 
   const resMenuFirst = menuFirst.map((el, index) =>
-    <CardMenu key={index} el={el} isAdmin={isAdmin}/>
+    <CardMenu key={index} el={el} getMenu={getMenu} isAdmin={isAdmin}/>
   )
 
   const resMenuSecond = menuSecond.map((el, index) =>
-    <CardMenu key={index} el={el} isAdmin={isAdmin}/>
+    <CardMenu key={index} el={el} getMenu={getMenu} isAdmin={isAdmin}/>
   )
 
   const resMenuThird = menuThird.map((el, index) =>
-    <CardMenu key={index} el={el} isAdmin={isAdmin}/>
+    <CardMenu key={index} el={el} getMenu={getMenu} isAdmin={isAdmin}/>
   )
 
   return (
-    <div className='menu'>
+    <div className={(menuFirst.length || menuSecond.length || menuThird.length) ? `menu` : 'menuHide'}>
       <p className={!isMenuOpen ? 'title' : 'title title-open'} onClick={() => setMenuOpen(!isMenuOpen)}>{title}</p>
       {isMenuOpen ?
         <div className="open">
@@ -52,7 +53,7 @@ const MenuSection = ({
             <img className='imgRevert' src="/img/menuBackground.svg" alt="background"/>
           </div>
         </div>
-        : <img src="/img/menuLine.svg" alt="line"/>}
+        : <img className='line' src="/img/menuLine.svg" alt="line"/>}
     </div>
   );
 };

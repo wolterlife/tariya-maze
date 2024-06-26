@@ -70,7 +70,6 @@ const Settings = () => {
         })
           .then((response) => response.json())
           .then((data) => {
-            console.log(data);
             if (data.msg === 'Успешно') {
               setPasswordSection(false)
               setErrorPass(0)

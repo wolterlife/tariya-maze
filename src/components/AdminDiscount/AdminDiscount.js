@@ -33,7 +33,7 @@ const AdminDiscount = () => {
         'Authorization': `Bearer ${localStorage.getItem('authToken')}`
       } })
       .then((response) => response.json())
-      .then((data) => {
+      .then(() => {
         getDiscountsFoo();
       })
       .catch((error) => console.log(error));
@@ -61,7 +61,6 @@ const AdminDiscount = () => {
   }
 
   function updateDiscountFoo() {
-    console.log(true)
     fetch(`http://localhost:3000/discounts/${selectedEdit.id}`, {
       method: "PUT",
       headers: {
@@ -75,7 +74,7 @@ const AdminDiscount = () => {
       })
     })
       .then((response) => response.json())
-      .then((data) => {
+      .then(() => {
         setShowCards(true)
         getDiscountsFoo()
       })

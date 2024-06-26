@@ -18,6 +18,20 @@
     top: 0;
   }
 
+  .exit {
+    position: absolute;
+    top: 29px;
+    right: 24vw;
+    width: fit-content;
+    border: 1px solid #ac9168;
+    padding: 6px 15px;
+    background-color: #1F262A;
+    color: #AC9168;
+    font-family: "Candara", sans-serif;
+    font-weight: 300;
+    cursor: pointer;
+  }
+
   .navMenu {
     width: 57vw;
     display: flex;

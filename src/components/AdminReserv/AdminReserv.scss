@@ -101,6 +101,7 @@
       justify-content: space-around;
       align-items: center;
       padding-inline: 84px 124px;
+      overflow-x: hidden;
 
       .textWhite {
         font-family: Candara, sans-serif;
@@ -110,7 +111,7 @@
         max-width: 10vw;
         min-width: 200px;
         text-align: center;
-        margin-left: 48px;
+        margin-left: 15px;
       }
     }
   }

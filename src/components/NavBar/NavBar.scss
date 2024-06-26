@@ -27,10 +27,39 @@
         font-weight: 400;
         line-height: normal;
         text-decoration: none;
-        padding-inline: 50px;
+        margin-inline: 50px;
         background-color: transparent;
         border: 0;
         cursor: pointer;
+
+        &:hover {
+          border-bottom: 1px solid #AC9168;
+        }
+
+        &:nth-child(3):hover {
+          border-bottom: 0;
+        }
+      }
+
+      .cartImg {
+        position: absolute;
+        padding-left: 24px;
+        top: 30px;
+        width: 40px;
+      }
+
+      .cartCount {
+        position: absolute;
+        top: 13px;
+        right: 190px;
+
+        color: white;
+        font-family: "Candara Light", serif;
+        background-color: #AC9168;
+        border-radius: 100px;
+        width: 20px;
+        height: 20px;
+        text-align: center;
       }
     }
   }

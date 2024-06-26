@@ -1,15 +1,104 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './Cart.scss'
-
-import {dellFromCart, pushToCart} from "../../redux/commonSlice";
+import {clearCart, dellFromCart, pushToCart} from "../../redux/commonSlice";
+import {useDispatch, useSelector} from 'react-redux';
+import {useNavigate} from 'react-router-dom';
 
 const Cart = () => {
-  const [isPrevOrder, setPrevOrder] = useState(true) //todo: true
+  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const [isPrevOrder, setPrevOrder] = useState(true)
   const [isOpenSecond, setOpenSecond] = useState(false)
   const [changed, setChanged] = useState(false)
   const [PaymentValue, setPaymentValue] = useState('картой курьеру');
+  const [dest, setDest] = useState(localStorage.getItem('userDestination'));
   const [isCartWindow, setCartWindow] = useState(true)
+  const [comment, setComment] = useState('');
+  const [people, setPeople] = useState("1");
+  const [time, setTime] = useState("10:00");
+  const { cart } = useSelector(state => state.common);
+  const [res, setRes] = useState([])
 
+  function converter() {
+    setRes([...cart.reduce( (mp, o) => {
+      if (!mp.has(o.id)) mp.set(o.id, { ...o, count: 0 });
+      mp.get(o.id).count++;
+      return mp;
+    }, new Map()).values()])
+  }
+
+  async function sendOrder() {
+    let b = new Date();
+    const monthName = b.toLocaleString('default', { month: 'long' });
+    fetch(`http://localhost:3000/orders/`, {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+      },
+      body: JSON.stringify({
+        date: b.getDate() + ' ' + monthName + ', ' +  time,
+        dest: dest,
+        comment: comment,
+        people: people,
+        paymentValue: PaymentValue,
+        price: res.slice(1).reduce((acc, a) => a.price * a.count + acc, 0),
+        user: localStorage.getItem('userId')
+      })
+    })
+      .then((response) => response.json())
+      .then((r) => {
+        setCartWindow(false)
+        res.slice(1).forEach((el) => {
+            fetch(`http://localhost:3000/orders_menu/`, {
+              method: "POST",
+              headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+              },
+              body: JSON.stringify({
+                order: r.id,
+                item_id: el.id,
+                count: el.count
+              })
+            })
+              .then(() => dispatch(clearCart()))
+              .catch((error) => console.log(error));
+        })
+      })
+      .catch((error) => console.log(error));
+  }
+
+  useEffect(() => {
+    converter();
+  }, [cart]);
+
+
+
+  const final = res.slice(1).sort((a, b) => a.id - b.id).map(el => {
+    return (
+      <div key={el.id} className={'card' ? 'card' : 'card  discount'}>
+        <img src={'https://i.imgur.com/BkZT3MG.jpeg'} alt="img"/>
+        <div className='textBlock'>
+          <div className="infoTextBlock">
+            <p className='name'>{el.name}</p>
+            <p className='description'>{el.description}</p>
+            <p className='val'>{el.val}</p>
+          </div>
+          <div className='price'>{el.price}$</div>
+        </div>
+        <div className='buttons'>
+          <>
+            <img onClick={() => dispatch(dellFromCart(el))} className='dell' src="/img/icon-minus.svg" alt="dell"/>
+            <p className='count'>{el.count}</p>
+          </>
+          <img onClick={() => dispatch(pushToCart(el))} className='add' src="/img/icon-plus.svg" alt="add"/>
+        </div>
+      </div>
+    )
+  })
 
   return (
     <div className='cart'>
@@ -27,155 +116,37 @@ const Cart = () => {
               <div className="mainWindow">
                 <div className="main">
                   <div className="orderField">
-                    <div className={'card' ? 'card' : 'card  discount'}>
-                      <img src={'https://i.imgur.com/BkZT3MG.jpeg'} alt="img"/>
-                      <div className='textBlock'>
-                        <div className="infoTextBlock">
-                          <p className='name'>Жаркое</p>
-                          <p className='description'>Готовится из части животного, которая запекается
-                            в духовом шкафу</p>
-                          <p className='val'>250г</p>
-                        </div>
-                        <div className='price'>20$</div>
-                      </div>
-
-                      <div className='buttons'>
-                        <>
-                          <img className='dell' src="/img/icon-minus.svg" alt="dell"/>
-                          <p className='count'>{1}</p>
-                        </>
-                        <img className='add' src="/img/icon-plus.svg" alt="add"/>
-
-
-                      </div>
-                    </div>
-                    <div className={'card' ? 'card' : 'card  discount'}>
-                      <img src={'https://i.imgur.com/BkZT3MG.jpeg'} alt="img"/>
-                      <div className='textBlock'>
-                        <div className="infoTextBlock">
-                          <p className='name'>Жаркое</p>
-                          <p className='description'>Готовится из части животного, которая запекается
-                            в духовом шкафу</p>
-                          <p className='val'>250г</p>
-                        </div>
-                        <div className='price'>20$</div>
-                      </div>
-
-                      <div className='buttons'>
-                        <>
-                          <img className='dell' src="/img/icon-minus.svg" alt="dell"/>
-                          <p className='count'>{1}</p>
-                        </>
-                        <img className='add' src="/img/icon-plus.svg" alt="add"/>
-
-
-                      </div>
-                    </div>
-                    <div className={'card' ? 'card' : 'card  discount'}>
-                      <img src={'https://i.imgur.com/BkZT3MG.jpeg'} alt="img"/>
-                      <div className='textBlock'>
-                        <div className="infoTextBlock">
-                          <p className='name'>Жаркое</p>
-                          <p className='description'>Готовится из части животного, которая запекается
-                            в духовом шкафу</p>
-                          <p className='val'>250г</p>
-                        </div>
-                        <div className='price'>20$</div>
-                      </div>
-
-                      <div className='buttons'>
-                        <>
-                          <img className='dell' src="/img/icon-minus.svg" alt="dell"/>
-                          <p className='count'>{1}</p>
-                        </>
-                        <img className='add' src="/img/icon-plus.svg" alt="add"/>
-                      </div>
-                    </div>
-                    <div className={'card' ? 'card' : 'card  discount'}>
-                      <img src={'https://i.imgur.com/BkZT3MG.jpeg'} alt="img"/>
-                      <div className='textBlock'>
-                        <div className="infoTextBlock">
-                          <p className='name'>Жаркое</p>
-                          <p className='description'>Готовится из части животного, которая запекается
-                            в духовом шкафу</p>
-                          <p className='val'>250г</p>
-                        </div>
-                        <div className='price'>20$</div>
-                      </div>
-                      <div className='buttons'>
-                        <>
-                          <img className='dell' src="/img/icon-minus.svg" alt="dell"/>
-                          <p className='count'>{1}</p>
-                        </>
-                        <img className='add' src="/img/icon-plus.svg" alt="add"/>
-                      </div>
-                    </div>
-                    <div className={'card' ? 'card' : 'card  discount'}>
-                      <img src={'https://i.imgur.com/BkZT3MG.jpeg'} alt="img"/>
-                      <div className='textBlock'>
-                        <div className="infoTextBlock">
-                          <p className='name'>Жаркое</p>
-                          <p className='description'>Готовится из части животного, которая запекается
-                            в духовом шкафу</p>
-                          <p className='val'>250г</p>
-                        </div>
-                        <div className='price'>20$</div>
-                      </div>
-                      <div className='buttons'>
-                        <>
-                          <img className='dell' src="/img/icon-minus.svg" alt="dell"/>
-                          <p className='count'>{1}</p>
-                        </>
-                        <img className='add' src="/img/icon-plus.svg" alt="add"/>
-                      </div>
-                    </div>
-                    <div className={'card' ? 'card' : 'card  discount'}>
-                      <img src={'https://i.imgur.com/BkZT3MG.jpeg'} alt="img"/>
-                      <div className='textBlock'>
-                        <div className="infoTextBlock">
-                          <p className='name'>Жаркое</p>
-                          <p className='description'>Готовится из части животного, которая запекается
-                            в духовом шкафу</p>
-                          <p className='val'>250г</p>
-                        </div>
-                        <div className='price'>20$</div>
-                      </div>
-
-                      <div className='buttons'>
-                        <>
-                          <img className='dell' src="/img/icon-minus.svg" alt="dell"/>
-                          <p className='count'>{1}</p>
-                        </>
-                        <img className='add' src="/img/icon-plus.svg" alt="add"/>
-                      </div>
-                    </div>
+                    {final}
                   </div>
                   <div className="cartInfo">
                     <p className="nameText">Брагимец Арим</p>
                     <div className="info">
                       <img className='iconsLoc' src="/img/footer-location.svg" alt="location"/>
-                      <div className="infoText">г. Гродно ул. Высокая д. 6</div>
+                      <input onChange={(v) => setDest(v.target.value)} defaultValue={localStorage.getItem('userDestination')} className="infoText input"/>
                     </div>
                     <div className="info">
                       <img className='iconsUs' src="/img/reserv-ic2.svg" alt="location"/>
-                      <div className="infoText">2</div>
+                      <input onChange={(v) => setPeople(v.target.value)} defaultValue={1} className="infoText input"/>
                     </div>
                     <div className="info">
                       <img className='iconsTime' src="/img/reserv-ic3.svg" alt="location"/>
-                      <div className="infoText">к 19:45</div>
+                      <input onChange={(v) => setTime(v.target.value)} defaultValue={'10:00'} className="infoText input"/>
                     </div>
                     <div className="comment">
                       <p className="commentsText">Коментарии к заказу:</p>
-                      <textarea className='comInput' name="comment"/>
+                      <textarea onChange={(v) => setComment(v.target.value)} className='comInput' name="comment"/>
                     </div>
                   </div>
                 </div>
                 <div className="bottomField">
                   <div className="resultPrice">
                     <p>Итог:</p>
-                    <p className="priseText">80$</p>
+                    <p className="priseText">{res.slice(1).reduce((acc, a) => a.price * a.count + acc, 0)}$</p>
                   </div>
-                  <input onClick={() => setPrevOrder(false)} className='button' type="button" value='К оформлению'/>
+                  <input onClick={() => {
+                    if (people && dest && time && res.length > 1)
+                    setPrevOrder(false)
+                  }} className='button' type="button" value='К оформлению'/>
                 </div>
               </div>
               :
@@ -193,14 +164,14 @@ const Cart = () => {
                     <p className='text'>Способ оплаты:</p>
                   </div>
                   <div className="whiteContainer">
-                    <p className="nameText">Брагимец Арим</p>
-                    <p className="text">+375196584225</p>
-                    <p className="text">г. Гродно ул. Высокая д. 6</p>
-                    <p className="text">2</p>
-                    <p className="text">к 19:45</p>
-                    <p className="text">Жаркое, Жаркое, Жаркое, Жаркое</p>
-                    <p className="text">-</p>
-                    <p className="text">80 $</p>
+                    <p className="nameText">{localStorage.getItem('userSecondName')} {localStorage.getItem('userFirstName')}</p>
+                    <p className="text">{localStorage.getItem('userPhone')}</p>
+                    <p className="text">{dest}</p>
+                    <p className="text">{people}</p>
+                    <p className="text">к {time}</p>
+                    <p className="text">{res.slice(1).map((el) => `${el.name} x${el.count}, `)}</p>
+                    <p className="text">{comment ? comment : '-'}</p>
+                    <p className="text">{res.slice(1).reduce((acc, a) => a.price * a.count + acc, 0)}$</p>
                     <div tabIndex={0}
                          onClick={() => {
                            setOpenSecond(!isOpenSecond)
@@ -229,7 +200,9 @@ const Cart = () => {
                 </div>
                 <div className="buttons">
                   <input onClick={() => setPrevOrder(true)} className='buttCancel' type="button" value='Отменить'/>
-                  <input onClick={() => setCartWindow(false)} className='buttDeliver' type="button" value='Доставить'/>
+                  <input onClick={() => {
+                    sendOrder()
+                  }} className='buttDeliver' type="button" value='Доставить'/>
                 </div>
               </div>
             }
@@ -237,8 +210,8 @@ const Cart = () => {
           :
           <div className="cartEnd">
             <div className="firstText">Заказ оформлен успешно!</div>
-            <p className="infoText">Дожидайтесь курьера к 19:45</p>
-            <input className='button' type="button" value='На главную'/>
+            <p className="infoText">Дожидайтесь курьера к {time}</p>
+            <input onClick={() => navigate('/')} className='button' type="button" value='На главную'/>
           </div>
         }
 

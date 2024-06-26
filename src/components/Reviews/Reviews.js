@@ -14,10 +14,8 @@ const Reviews = () => {
     setTimeout(() => {
       if (current) {
         const {scrollLeft, scrollWidth, clientWidth} = current;
-        console.log(scrollLeft, scrollWidth - clientWidth)
         setCanScrollLeft(scrollLeft > 0);
         setCanScrollRight(Math.abs (scrollLeft - (scrollWidth - clientWidth)) > 1);
-        console.log(scrollLeft, '- (',scrollWidth-clientWidth,') =',  (scrollLeft - (scrollWidth - clientWidth)))
       }
     }, 400)
   };

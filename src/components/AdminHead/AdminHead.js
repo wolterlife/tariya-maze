@@ -6,8 +6,10 @@ import AdminNews from '../AdminNews/AdminNews';
 import AdminAlert from '../AdminAlert/AdminAlert';
 import AdminReserv from '../AdminReserv/AdminReserv';
 import AdminOrders from '../AdminOrders/AdminOrders';
+import {useNavigate} from 'react-router-dom';
 
 const AdminHead = () => {
+  const navigate = useNavigate();
   const [option, setOption] = useState(0);
 
   function selectorFoo(v) {
@@ -21,6 +23,10 @@ const AdminHead = () => {
       <div className="darkContainer">
         <p className='text'>{localStorage.getItem('userSecondName')} {localStorage.getItem('userFirstName')}</p>
       </div>
+      <input onClick={() => {
+        localStorage.clear()
+        navigate('/')
+      }} className='exit' type='button' value='Выйти'/>
       <div className="navMenu">
         <p onClick={() => selectorFoo(1)} className={option === 1 ? 'option selected' : 'option'}>Акции</p>
         <p onClick={() => selectorFoo(2)} className={option === 2 ? 'option selected' : 'option'}>Меню</p>

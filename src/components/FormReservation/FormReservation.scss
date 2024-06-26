@@ -79,7 +79,6 @@
               overflow: scroll;
               -ms-overflow-style: none;  /* Internet Explorer 10+ */
               scrollbar-width: none;  /* Firefox */
-              //todo: change this if change size of selector
 
               &::-webkit-scrollbar {
                 display: none;  /* Safari and Chrome */
@@ -185,6 +184,10 @@
         padding: 8px 15px;
         margin-top: 48px;
         margin-bottom: 38px;
+
+        &:hover {
+          background-color: #171C1F;
+        }
       }
     }
 
@@ -220,6 +223,10 @@
         padding: 8px 15px;
         margin-top: 48px;
         margin-bottom: 38px;
+
+        &:hover {
+          background-color: #171C1F;
+        }
       }
     }
   }

@@ -1,9 +1,12 @@
 import React from 'react';
 import './ImgLargeButtons.scss'
 import {useNavigate} from "react-router-dom";
+import {useDispatch} from 'react-redux';
+import {setPopUpProfileVisible} from '../../redux/commonSlice';
 
 const ImgLargeButtons = () => {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   return (
     <div className='backgroundImg'>
       <div className="content">
@@ -17,7 +20,10 @@ const ImgLargeButtons = () => {
             <p className='text'>Бронировать стол</p>
           </div>
           <div tabIndex='0' className="button">
-            <p onClick={() => navigate('/delivery')} className='text'>Доставка</p>
+            <p onClick={() => {
+              if (localStorage.getItem('userId') !== null) navigate('/delivery')
+              else dispatch(setPopUpProfileVisible(true))
+            }} className='text'>Доставка</p>
           </div>
         </div>
       </div>

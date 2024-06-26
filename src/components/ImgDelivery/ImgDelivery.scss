@@ -30,6 +30,10 @@
     transform: translate(-50%, -50%);
     cursor: pointer;
 
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.80);
+    }
+
     .text {
       margin: 0;
       font-family: "Candara", sans-serif;;

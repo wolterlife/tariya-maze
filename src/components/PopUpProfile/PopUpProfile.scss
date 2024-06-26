@@ -62,6 +62,10 @@
       cursor: pointer;
       margin-top: 40px;
       padding: 8px 62px;
+
+      &:hover {
+        background-color: #171C1F;
+      }
     }
 
     .line {
@@ -109,6 +113,10 @@
       color: #ac9168;
       cursor: pointer;
       margin: 25px 0 40px;
+
+      &:hover {
+        border-bottom: 1px solid #AC9168;
+      }
     }
   }
 }

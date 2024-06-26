@@ -1,15 +1,67 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import './UserProfile.scss'
 import {useNavigate} from 'react-router-dom';
-import {setPopUpProfileVisible} from '../../redux/commonSlice';
 
-const UserProfile = ({ orders = [], reservations = [] }) => {
+const UserProfile = ({ orders = [], reservations = [], ordMenu = [] }) => {
   const navigate = useNavigate()
   const [isShowOrders, setShowOrders] = useState(true);
   const [isHistoryVisible, setHistoryVisible] = useState(false)
   const [visibleReview, setVisibleReview] = useState(false);
   const [valueReview, setValueReview] = useState('')
   const [starStatus, setStarStatus] = useState(0)
+
+  function chk(t) {
+    if (t.length < 5) return '0' + t
+    return t;
+  }
+
+  function chkReserv(el) {
+    let data = new Date(el.date)
+    data.setHours(el.time.split(':')[0])
+    data.setMinutes(el.time.split(':')[1])
+    let now = new Date()
+    return (chk(+now) < chk(+data));
+  }
+
+  function chkOrder(el) {
+    function getMonthByName(n) {
+      switch (n) {
+        case 'январь':
+          return '01'
+        case 'февраль':
+          return '02'
+        case 'март':
+          return '03'
+        case 'апрель':
+          return '04'
+        case 'май':
+          return '05'
+        case 'июнь':
+          return '06'
+        case 'июль':
+          return '07'
+        case 'август':
+          return '08'
+        case 'сентябрь':
+          return '09'
+        case 'октябрь':
+          return '10'
+        case 'ноябрь':
+          return '11'
+        case 'декабрь':
+          return '12'
+      }
+    }
+
+    let ordTime = chk(el.date.split(', ')[1])
+    let ordDay = el.date.split(', ')[0].split(' ')[0]
+    let ordMonth = el.date.split(', ')[0].split(' ')[1]
+    let data = new Date(`${new Date().getFullYear()}-${getMonthByName(ordMonth)}-${ordDay}`)
+    data.setHours(+ordTime.split(':')[0])
+    data.setMinutes(+ordTime.split(':')[1])
+    let now = new Date()
+    return (+now < +data);
+  }
 
   function sendReview() {
     if (starStatus && valueReview) {
@@ -27,7 +79,7 @@ const UserProfile = ({ orders = [], reservations = [] }) => {
       })
     })
       .then((response) => response.json())
-      .then((res) => {
+      .then(() => {
         setVisibleReview(false);
         setStarStatus(0)
         setValueReview('')
@@ -38,10 +90,12 @@ const UserProfile = ({ orders = [], reservations = [] }) => {
 
   const resOrders = orders?.map((el) =>
     <div key={el.id} className="card">
-      {el.isActive && <p className='textActive'>Сейчас активен</p>}
+      {
+        chkOrder(el)
+        && <p className='textActive'>Сейчас активен</p>}
       <div className="part">
         <p className='head'>Заказ</p>
-        <p className='text'>{el.title}</p>
+        <p className='text'>{ordMenu.filter((j) => j.order?.id === el?.id).map((m) => m.item_id.name + " x" + m.count + ', ')}</p>
       </div>
       <div className="part">
         <p className='head'>Цена</p>
@@ -56,10 +110,10 @@ const UserProfile = ({ orders = [], reservations = [] }) => {
 
   const resReserv = reservations?.map((el) =>
     <div key={el.id} className="card">
-      {el.isActive && <p className='textActive'>Сейчас активен</p>}
+      {chkReserv(el) && <p className='textActive'>Сейчас активен</p>}
       <div className="part">
         <p className='head'>Дата</p>
-        <p className='text'>{el.date.split('-').reverse().join('.')}</p>
+        <p className='text'>{el.date?.split('-').reverse().join('.')}</p>
       </div>
       <div className="part">
         <p className='head'>к-во человек</p>
@@ -84,7 +138,7 @@ const UserProfile = ({ orders = [], reservations = [] }) => {
         <div className="user">
           <p className='text'>{localStorage.getItem('userPhone')}</p>
           <p className='text'>{localStorage.getItem('userMail')}</p>
-          <p className='text'>{localStorage.getItem('userDOB').split('-').reverse().join('.')}</p>
+          <p className='text'>{localStorage.getItem('userDOB')?.split('-').reverse().join('.')}</p>
           <p className='text'>{localStorage.getItem('userDestination')}</p>
           {!isHistoryVisible &&
             <input onClick={() => setHistoryVisible(true)} className='button' type='button' value='История заказов'/>
@@ -101,10 +155,16 @@ const UserProfile = ({ orders = [], reservations = [] }) => {
               <img className='img' src="/img/right-alert.svg" alt="right"/>
             </div>
           }
-          <input onClick={() => {
-            setHistoryVisible(false)
-            navigate('/settings')
-          }} className='settings' type="image" src='/img/settings.svg' alt='settings'/>
+          <div className='btnCont'>
+            <input onClick={() => {
+              localStorage.clear()
+              navigate('/')
+            }} className='exit' type='button' value='Выйти'/>
+            <input onClick={() => {
+              setHistoryVisible(false)
+              navigate('/settings')
+            }} className='settings' type="image" src='/img/settings.svg' alt='settings'/>
+          </div>
         </div>
       </div>
       <div className="historyPart">

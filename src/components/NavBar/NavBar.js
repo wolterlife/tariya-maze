@@ -8,7 +8,7 @@ import PopUpProfile from '../PopUpProfile/PopUpProfile';
 
 const NavBar = () => {
   const dispatch = useDispatch()
-  const {isPopUpProfileVisible} = useSelector(state => state.common)
+  const {isPopUpProfileVisible, cart} = useSelector(state => state.common)
   return (
     <div className='containerNav'>
       <div className='navbar'>
@@ -20,7 +20,15 @@ const NavBar = () => {
           </Link>
           <Link to='/discounts' className='text'>Акции</Link>
           {(localStorage.getItem('userId') !== null) ?
-            <Link to='/profile' className='text'>Профиль</Link> :
+            <>
+              <Link to='/profile' className='text'>Профиль</Link>
+              <div>
+
+              <Link to='/cart'><img className='cartImg' src="/img/cart-icon.svg" alt=""/></Link>
+              <p className='cartCount'>{cart.length - 1}</p>
+              </div>
+            </>
+            :
             <button onClick={() => dispatch(setPopUpProfileVisible(true))} className='text'>Профиль</button>
           }
         </div>

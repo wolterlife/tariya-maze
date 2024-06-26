@@ -15,6 +15,11 @@
   align-items: center;
   flex-direction: column;
   background-color: #1F262A;
+  padding-bottom: 24px;
+
+  .line {
+    margin-bottom: 24px;
+  }
 
   .title {
     font-family: "Viaoda Libre", sans-serif;
@@ -22,6 +27,7 @@
     font-size: 40px;
     color: #fff;
     cursor: pointer;
+    margin-bottom: 18px;
   }
 
   .title-open {
@@ -207,6 +213,14 @@
                 width: 30px;
               }
 
+              .update {
+                position: absolute;
+                cursor: pointer;
+                right: 5px;
+                top: 80px;
+                width: 25px;
+              }
+
               .dell {
                 position: absolute;
                 width: 25px;
@@ -234,4 +248,8 @@
       }
     }
   }
+}
+
+.menuHide {
+  display: none;
 }

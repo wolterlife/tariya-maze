@@ -5,6 +5,7 @@ const commonSlice = createSlice({
   initialState: {
     isPopUpProfileVisible: false,
     cart: [{}],
+    search: ''
   },
   reducers: {
     setPopUpProfileVisible(state, action) {
@@ -17,8 +18,14 @@ const commonSlice = createSlice({
       let idx = state.cart.findIndex(x => x.name === action.payload.name)
       state.cart.splice(idx, 1);
     },
+    clearCart(state) {
+      state.cart = [{}];
+    },
+    setSearch(state, action) {
+      state.search = action.payload;
+    }
   }
 })
 
-export const {setPopUpProfileVisible, pushToCart, dellFromCart} = commonSlice.actions
+export const {setPopUpProfileVisible, pushToCart, dellFromCart, clearCart, setSearch} = commonSlice.actions
 export default commonSlice.reducer;

@@ -13,33 +13,23 @@ import CartPage from "./features/Cart/CartPage";
 import AdminPage from './features/Admin/AdminPage';
 import NotFoundPage from './features/NotFound/NotFoundPage';
 
-// TODO: Корзина подправить http://localhost:3000/cart
-// TODO: Перенести popUp профиль в навбар
-// TODO: Адаптив слазит в футере
-// TODO: Футер некоторые ссылки не в самом верху из-за этого не кликабельны
-// TODO: Поиск функционал
-// TODO: Картинки не должны быть кликабельны
-// TODO: Ховеры
-// TODO: Акции текст сползп
-// TODO: Новости фон
-
 function App() {
   return (
     <>
       <Routes>
-        <Route path='/' element={<HomePage/>}/>
-        <Route path='*' element={<NotFoundPage/>}/>
-        <Route path='/news' element={<NewsPage/>}/>
-        <Route path='/menu' element={<MenuPage/>}/>
-        <Route path='/discounts' element={<DiscountsPage/>}/>
-        <Route path='/registration' element={<RegistrationPage/>}/>
-        <Route path='/reserv' element={<ReservPage/>}/>
-        <Route path='/delivery' element={<DeliveryPage/>}/>
-        <Route path='/select' element={<SelectPage/>}/>
-        <Route path='/profile' element={<ProfilePage/>}/>
-        <Route path='/settings' element={<SettingsPage/>}/>
-        <Route path='/cart' element={<CartPage/>}/>
-        <Route path='/admin' element={<AdminPage/>}/>
+        <Route exact path='/' element={<HomePage/>}/>
+        <Route exact path='*' element={<NotFoundPage/>}/>
+        <Route exact path='/news' element={<NewsPage/>}/>
+        <Route exact path='/menu' element={<MenuPage/>}/>
+        <Route exact path='/discounts' element={<DiscountsPage/>}/>
+        <Route exact path='/registration' element={<RegistrationPage/>}/>
+        <Route exact path='/reserv' element={<ReservPage/>}/>
+        <Route exact path='/delivery' element={<DeliveryPage/>}/>
+        <Route exact path='/select' element={<SelectPage/>}/>
+        <Route exact path='/profile' element={<ProfilePage/>}/>
+        <Route exact path='/settings' element={<SettingsPage/>}/>
+        <Route exact path='/cart' element={<CartPage/>}/>
+        <Route exact path='/admin' element={<AdminPage/>}/>
       </Routes>
     </>
   );
